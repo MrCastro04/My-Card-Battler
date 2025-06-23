@@ -799,6 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5678135914636567136}
   - component: {fileID: 1065638374538697338}
+  - component: {fileID: 5248700465739795999}
   m_Layer: 0
   m_Name: Card View
   m_TagString: Untagged
@@ -834,6 +835,25 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &5248700465739795999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120991925330427489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b0d95e4d3744a8ad9c00aac26d96f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Modules.Content.Card.Scripts.Card_View.CardView
+  _manaAmount: {fileID: 7558187946958389702}
+  _attackAmount: {fileID: 2234524028532756256}
+  _healthAmount: {fileID: 730479932918867166}
+  _name: {fileID: 2634701497986042024}
+  _description: {fileID: 5406186305117375412}
+  _cardType: {fileID: 6071447791059841959}
+  _wrapper: {fileID: 961277330795108491}
 --- !u!1 &5355233196780584236
 GameObject:
   m_ObjectHideFlags: 0
