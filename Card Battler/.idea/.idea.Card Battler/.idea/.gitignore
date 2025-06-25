@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Card Battler.iml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\Users\slava\Desktop\Unity Projects\My Own Card Game\My-own-Card-Game\Card Battler\.idea\.idea.Card Battler\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
