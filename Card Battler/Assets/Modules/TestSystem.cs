@@ -1,16 +1,24 @@
 ﻿using Modules.Content.Card.Scripts;
+using Modules.Core.Factories;
 using UnityEngine;
+using Zenject;
 
 namespace Modules
 {
     public class TestSystem : MonoBehaviour
     {
         [SerializeField] private CardData _cardData;
-        [SerializeField] private CardView _cardView;
-
-        private void Awake()
+        
+        private ICardViewFactory _cardViewFactory;
+        
+        [Inject]
+        private void Construct(ICardViewFactory cardViewFactory)
         {
-            _cardView.Setup(new(_cardData)); 
+            _cardViewFactory = cardViewFactory;
+            
+            _cardViewFactory.Load();
+            
+            _cardViewFactory.Create(new(_cardData), Vector3.zero);
         }
     }
 }
