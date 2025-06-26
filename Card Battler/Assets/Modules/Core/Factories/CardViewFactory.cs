@@ -1,14 +1,23 @@
 ﻿using DG.Tweening;
 using Modules.Content.Card.Scripts;
+using Unity.Mathematics;
 using UnityEngine;
+using Zenject;
 
 namespace Modules.Core.Factories
 {
-    public class CardViewFactory : MonoBehaviour,ICardViewFactory
+    public class CardViewFactory : ICardViewFactory
     {
         private const string PATH = "Card View";
-        private CardView _cardViewPrefab = null;
-        
+        private Object _cardViewPrefab = null;
+
+        private readonly DiContainer _diContainer;
+
+        public CardViewFactory(DiContainer diContainer)
+        { 
+            _diContainer = diContainer;
+        }
+
         public void Load()
         {
             _cardViewPrefab = Resources.Load<CardView>(PATH);
@@ -16,7 +25,8 @@ namespace Modules.Core.Factories
 
         public CardView Create(CardModel cardModel, Vector3 position)
         {
-            CardView newCardView = Instantiate(_cardViewPrefab, position, Quaternion.identity, null);
+            CardView newCardView = _diContainer
+                .InstantiatePrefabForComponent<CardView>(_cardViewPrefab,position,quaternion.identity, null);
             
             newCardView.Setup(cardModel);
             
