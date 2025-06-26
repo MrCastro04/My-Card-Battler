@@ -12,7 +12,8 @@ namespace Modules.Core.Factories
             Container
                 .BindInterfacesTo<CardViewFactory>()
                 .FromInstance(_cardViewFactory)
-                .AsSingle();
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
