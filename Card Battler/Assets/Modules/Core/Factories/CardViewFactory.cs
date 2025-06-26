@@ -1,4 +1,5 @@
-﻿using Modules.Content.Card.Scripts;
+﻿using DG.Tweening;
+using Modules.Content.Card.Scripts;
 using UnityEngine;
 
 namespace Modules.Core.Factories
@@ -13,11 +14,17 @@ namespace Modules.Core.Factories
             _cardViewPrefab = Resources.Load<CardView>(PATH);
         }
 
-        public void Create(CardModel cardModel, Vector3 position)
+        public CardView Create(CardModel cardModel, Vector3 position)
         {
             CardView newCardView = Instantiate(_cardViewPrefab, position, Quaternion.identity, null);
             
-            newCardView.Setup(cardModel); 
+            newCardView.Setup(cardModel);
+            
+            newCardView.transform.localScale = Vector3.zero;
+
+            newCardView.transform.DOScale(Vector3.one, 0.15f);
+
+            return newCardView;
         }
     }
 }

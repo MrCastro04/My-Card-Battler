@@ -5,6 +5,6 @@ namespace Modules.Content.Hand
 {
     public interface IHand
     {
-        IEnumerator AddCard(CardView cardView);
+        IEnumerator AddCard(CardView cardView); 
     }
 }

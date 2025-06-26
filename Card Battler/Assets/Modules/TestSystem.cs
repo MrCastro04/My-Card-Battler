@@ -1,4 +1,5 @@
 ﻿using Modules.Content.Card.Scripts;
+using Modules.Content.Hand;
 using Modules.Core.Factories;
 using UnityEngine;
 using Zenject;
@@ -10,15 +11,23 @@ namespace Modules
         [SerializeField] private CardData _cardData;
         
         private ICardViewFactory _cardViewFactory;
+        private IHand _hand;
         
         [Inject]
-        private void Construct(ICardViewFactory cardViewFactory)
+        private void Construct(ICardViewFactory cardViewFactory,IHand hand) 
         {
             _cardViewFactory = cardViewFactory;
+
+            _hand = hand;
             
             _cardViewFactory.Load();
-            
-            _cardViewFactory.Create(new(_cardData), Vector3.zero);
+
+            for (int i = 0; i < 3; i++)
+            {
+                CardView cardView = _cardViewFactory.Create(new(_cardData), Vector3.zero);
+
+                StartCoroutine(_hand.AddCard(cardView));
+            }
         }
     }
 }
