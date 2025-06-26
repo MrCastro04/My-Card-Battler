@@ -24,7 +24,7 @@ namespace Modules
 
             for (int i = 0; i < 3; i++)
             {
-                CardView cardView = _cardViewFactory.Create(new(_cardData), Vector3.zero);
+                CardView cardView = _cardViewFactory.Create(new(_cardData), hand.HandPosition);
 
                 StartCoroutine(_hand.AddCard(cardView));
             }
