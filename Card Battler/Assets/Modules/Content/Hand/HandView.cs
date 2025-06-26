@@ -7,12 +7,25 @@ using UnityEngine.Splines;
 
 namespace Modules.Content.Hand
 {
-    public class HandView : MonoBehaviour, IHand
+    public class HandView : IHand
     {
-        [SerializeField] private SplineContainer _splineContainer;
-        [SerializeField] private int _maxHandSize;
+        public readonly List<CardView> CardsInHand;
+        
+        private readonly SplineContainer _splineContainer;
+        private readonly int _maxHandSize;
 
-        public readonly List<CardView> CardsInHand = new();
+        public Vector3 HandPosition { get; private set; }
+
+        public HandView(int maxHandSize, SplineContainer splineContainer, Vector3 handPosition)
+        {
+            _splineContainer = splineContainer;
+            
+            _maxHandSize = maxHandSize;
+
+            HandPosition = handPosition;
+            
+            CardsInHand = new();
+        }
 
         public IEnumerator AddCard(CardView cardView)
         {
@@ -38,7 +51,7 @@ namespace Modules.Content.Hand
                 Vector3 splinePosition = spline.EvaluatePosition(position);
 
                 CardsInHand[i].transform
-                    .DOMove(splinePosition + transform.position + cardSpacing * i * Vector3.back, duration);
+                    .DOMove(splinePosition + HandPosition + cardSpacing * i * Vector3.back, duration);
 
                 CardsInHand[i].transform
                     .DORotate(Quaternion.identity.eulerAngles, duration);
