@@ -2,7 +2,7 @@
 using Modules.Content.Card.Scripts;
 using UnityEngine;
 
-namespace Modules.Content.Hand
+namespace Modules.Content.Hand.Scripts
 {
     public interface IHand
     {

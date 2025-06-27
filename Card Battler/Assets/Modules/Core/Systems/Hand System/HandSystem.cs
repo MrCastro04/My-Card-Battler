@@ -1,29 +1,31 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Modules.Content.Card.Scripts;
+using Modules.Content.Hand.Scripts;
 using UnityEngine;
 using UnityEngine.Splines;
+using Zenject;
 
-namespace Modules.Content.Hand
+namespace Modules.Core.Systems.Hand_System
 {
-    public class HandView : IHand
+    public class HandSystem : IHand
     {
-        public readonly List<CardView> CardsInHand;
-        
+        private readonly List<CardView> CardsInHand;
         private readonly SplineContainer _splineContainer;
         private readonly int _maxHandSize;
 
         public Vector3 HandPosition { get; private set; }
+        
 
-        public HandView(int maxHandSize, SplineContainer splineContainer, Vector3 handPosition)
+        [Inject] public HandSystem(int maxHandSize, SplineContainer splineContainer, Vector3 handPosition)
         {
             _splineContainer = splineContainer;
-            
+
             _maxHandSize = maxHandSize;
 
             HandPosition = handPosition;
-            
+
             CardsInHand = new();
         }
 

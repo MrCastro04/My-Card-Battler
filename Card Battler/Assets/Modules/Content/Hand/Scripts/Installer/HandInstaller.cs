@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Modules.Core.Systems.Hand_System;
+using UnityEngine;
 using UnityEngine.Splines;
 using Zenject;
 
-namespace Modules.Content.Hand
+namespace Modules.Content.Hand.Scripts.Installer
 {
     public class HandInstaller : MonoInstaller
     {
@@ -17,12 +18,10 @@ namespace Modules.Content.Hand
 
         private void BindHand()
         {
-            HandView newHand = new(_maxHandSize, _splineContainer, _handPosition);
-
             Container
-                .BindInterfacesAndSelfTo<HandView>()
-                .FromInstance(newHand)
+                .BindInterfacesAndSelfTo<HandSystem>()
                 .AsSingle()
+                .WithArguments(_maxHandSize,_splineContainer,_handPosition)
                 .NonLazy();
         }
     }
