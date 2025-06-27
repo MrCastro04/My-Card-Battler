@@ -1,10 +1,10 @@
 ﻿using Modules.Content.Card.Scripts;
-using Modules.Content.Hand;
+using Modules.Content.Hand.Scripts;
 using Modules.Core.Factories;
 using UnityEngine;
 using Zenject;
 
-namespace Modules
+namespace Modules.Core.Systems.Test_System
 {
     public class TestSystem : MonoBehaviour
     {
