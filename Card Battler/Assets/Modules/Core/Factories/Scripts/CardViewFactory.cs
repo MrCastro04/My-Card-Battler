@@ -4,11 +4,10 @@ using Unity.Mathematics;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.Core.Factories
+namespace Modules.Core.Factories.Scripts
 {
     public class CardViewFactory : ICardViewFactory
     {
-        private const string PATH = "Card View";
         private Object _cardViewPrefab = null;
 
         private readonly DiContainer _diContainer;
@@ -20,7 +19,7 @@ namespace Modules.Core.Factories
 
         public void Load()
         {
-            _cardViewPrefab = Resources.Load<CardView>(PATH);
+            _cardViewPrefab = Resources.Load<CardView>(Constants.Constants.CARD_VIEW_PREFAB_PATH);
         }
 
         public CardView Create(CardModel cardModel, Vector3 position)
