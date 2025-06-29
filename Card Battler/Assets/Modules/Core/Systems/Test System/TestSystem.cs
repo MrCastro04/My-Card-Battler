@@ -1,6 +1,6 @@
-﻿using Modules.Content.Card.Scripts;
-using Modules.Content.Hand.Scripts;
-using Modules.Core.Factories;
+﻿using Modules.Core.Factories;
+using Modules.Core.Systems.Action_System.Scripts;
+using Modules.New.Game_Actions;
 using UnityEngine;
 using Zenject;
 
@@ -8,29 +8,24 @@ namespace Modules.Core.Systems.Test_System
 {
     public class TestSystem : MonoBehaviour , IInitializable
     {
-        [SerializeField] private CardData _cardData;
-        
+        private ActionSystem _actionSystem;
         private ICardViewFactory _cardViewFactory;
-        private IHand _hand;
-        
+
         [Inject]
-        private void Construct(ICardViewFactory cardViewFactory,IHand hand) 
+        private void Construct(ICardViewFactory cardViewFactory, ActionSystem actionSystem) 
         {
             _cardViewFactory = cardViewFactory;
-
-            _hand = hand;
+            
+            _actionSystem = actionSystem;
         }
 
         public void Initialize()
         {
             _cardViewFactory.Load();
-            
-            for (int i = 0; i < 3; i++)
-            {
-                CardView cardView = _cardViewFactory.Create(new(_cardData), _hand.HandPosition);
 
-                StartCoroutine(_hand.AddCard(cardView));
-            }
+            DrawCardsGA drawCardsGa = new(3);
+            
+            _actionSystem.Perform(drawCardsGa);
         }
     }
 }

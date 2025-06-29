@@ -1,6 +1,10 @@
-﻿using Modules.Core.Systems.Action_System.Scripts;
+﻿using System.Collections.Generic;
+using Modules.Content.Card.Scripts;
+using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Hand_System;
 using Modules.Core.Systems.Test_System;
+using Modules.New;
+using Modules.New.Card_System;
 using UnityEngine;
 using UnityEngine.Splines;
 using Zenject;
@@ -14,14 +18,36 @@ namespace Modules.Core.Context.System_Installer
         [SerializeField] private int _handSize;
         [SerializeField] private SplineContainer _splineContainer;
         [SerializeField] private Vector3 _handPosition;
+        [SerializeField] private List<CardData> _startDeckData;
         
         public override void InstallBindings()
         {
             BindActionSystem();
+
+            BindDeckSystem();
             
             BindHandSystem();
             
+            BindCardSystem();
+            
             BindTestSystem();
+        }
+
+        private void BindCardSystem()
+        {
+            Container
+                .BindInterfacesAndSelfTo<CardSystem>()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindDeckSystem()
+        {
+            Container
+                .Bind<DeckSystem>()
+                .AsSingle()
+                .WithArguments(_startDeckData)
+                .NonLazy();
         }
 
         private void BindHandSystem()
@@ -29,7 +55,8 @@ namespace Modules.Core.Context.System_Installer
             Container
                 .BindInterfacesAndSelfTo<HandSystem>()
                 .AsSingle()
-                .WithArguments(_handPosition, _handSize, _splineContainer);
+                .WithArguments(_handPosition, _handSize, _splineContainer)
+                .NonLazy();
         }
 
         private void BindTestSystem()
@@ -48,7 +75,8 @@ namespace Modules.Core.Context.System_Installer
             Container
                 .Bind<ActionSystem>()
                 .FromInstance(_actionSystemPrefab)
-                .AsSingle().NonLazy();
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
