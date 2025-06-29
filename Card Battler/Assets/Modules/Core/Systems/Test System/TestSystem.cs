@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Modules.Core.Systems.Test_System
 {
-    public class TestSystem : MonoBehaviour
+    public class TestSystem : MonoBehaviour , IInitializable
     {
         [SerializeField] private CardData _cardData;
         
@@ -19,12 +19,15 @@ namespace Modules.Core.Systems.Test_System
             _cardViewFactory = cardViewFactory;
 
             _hand = hand;
-            
-            _cardViewFactory.Load();
+        }
 
+        public void Initialize()
+        {
+            _cardViewFactory.Load();
+            
             for (int i = 0; i < 3; i++)
             {
-                CardView cardView = _cardViewFactory.Create(new(_cardData), hand.HandPosition);
+                CardView cardView = _cardViewFactory.Create(new(_cardData), _hand.HandPosition);
 
                 StartCoroutine(_hand.AddCard(cardView));
             }
