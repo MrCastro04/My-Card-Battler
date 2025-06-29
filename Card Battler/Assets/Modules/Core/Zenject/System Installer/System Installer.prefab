@@ -50,6 +50,17 @@ MonoBehaviour:
   _handSize: 8
   _splineContainer: {fileID: 3115648880995060583, guid: 2766fe8e00314ddf84ae737474f70669, type: 3}
   _handPosition: {x: 0, y: -4, z: 0}
+  _startDeckData:
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
 --- !u!1001 &7395502773764431299
 PrefabInstance:
   m_ObjectHideFlags: 0

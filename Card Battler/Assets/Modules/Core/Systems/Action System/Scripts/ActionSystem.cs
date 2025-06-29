@@ -34,7 +34,7 @@ namespace Modules.Core.Systems.Action_System.Scripts
             _reactions?.Add(newReaction);
         }
 
-        public static void AttachPerformer<T>(Func<T, IEnumerator> performer) where T : GameAction
+        public void AttachPerformer<T>(Func<T, IEnumerator> performer) where T : GameAction
         {
             Type type = typeof(T);
 
@@ -51,7 +51,7 @@ namespace Modules.Core.Systems.Action_System.Scripts
             }
         }
 
-        public static void DetachPerformer<T>() where T : GameAction
+        public void DetachPerformer<T>() where T : GameAction
         {
             Type type = typeof(T);
 
@@ -61,7 +61,7 @@ namespace Modules.Core.Systems.Action_System.Scripts
             }
         }
 
-        public static void SubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
+        public void SubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
         {
             Dictionary<Type, List<Action<GameAction>>> sub = timing == ReactionTiming.PRE ? _preSubs : _postSubs;
 
@@ -85,7 +85,7 @@ namespace Modules.Core.Systems.Action_System.Scripts
             }
         }
 
-        public static void UnsubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
+        public  void UnsubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
         {
             Dictionary<Type, List<Action<GameAction>>> subs = timing == ReactionTiming.PRE ? _preSubs : _postSubs;
 

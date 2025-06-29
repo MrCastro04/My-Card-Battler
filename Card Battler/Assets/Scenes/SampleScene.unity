@@ -130,14 +130,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1571730472681531163, guid: 0dda4d00cb056f64aae0b433934f9c1e, type: 3}
-      propertyPath: _monoInstallers.Array.data[0]
-      value: 
-      objectReference: {fileID: 1855162798}
-    - target: {fileID: 1571730472681531163, guid: 0dda4d00cb056f64aae0b433934f9c1e, type: 3}
-      propertyPath: _monoInstallers.Array.data[1]
-      value: 
-      objectReference: {fileID: 1410802182}
     - target: {fileID: 7911730354443721648, guid: 0dda4d00cb056f64aae0b433934f9c1e, type: 3}
       propertyPath: m_Name
       value: SceneContext
@@ -373,28 +365,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1410802182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7500713416984552807, guid: 0dda4d00cb056f64aae0b433934f9c1e, type: 3}
-  m_PrefabInstance: {fileID: 617867127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e230f04c7c46abad635acb64dbb0ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1855162798 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3186952200030849510, guid: 0dda4d00cb056f64aae0b433934f9c1e, type: 3}
-  m_PrefabInstance: {fileID: 617867127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e26a6706494194806701e0d167cc5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
