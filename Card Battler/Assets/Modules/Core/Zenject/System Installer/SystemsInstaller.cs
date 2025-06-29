@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using Modules.Content.Card.Scripts;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Card_System;
+using Modules.Core.Systems.Deck_System;
 using Modules.Core.Systems.Hand_System;
 using Modules.Core.Systems.Test_System;
-using Modules.New;
-using Modules.New.Card_System;
 using UnityEngine;
 using UnityEngine.Splines;
 using Zenject;
 
-namespace Modules.Core.Context.System_Installer
+namespace Modules.Core.Zenject.System_Installer
 {
     public class SystemsInstaller : MonoInstaller
     {

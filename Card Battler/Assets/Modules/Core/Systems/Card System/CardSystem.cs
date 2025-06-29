@@ -1,12 +1,13 @@
 ﻿using System;
 using Modules.Content.Hand.Scripts;
 using Modules.Core.Factories;
+using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
-using Modules.Core.Systems.Card_System;
-using Modules.New.Game_Actions;
+using Modules.Core.Systems.Card_System.Sub_Systems;
+using Modules.Core.Systems.Deck_System;
 using Zenject;
 
-namespace Modules.New.Card_System
+namespace Modules.Core.Systems.Card_System
 {
     public class CardSystem : IInitializable, IDisposable
     {

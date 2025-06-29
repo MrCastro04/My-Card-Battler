@@ -2,10 +2,11 @@
 using Modules.Content.Card.Scripts;
 using Modules.Content.Hand.Scripts;
 using Modules.Core.Factories;
-using Modules.New;
-using Modules.New.Game_Actions;
+using Modules.Core.Game_Actions;
+using Modules.Core.Systems.Deck_System;
 
-namespace Modules.Core.Systems.Card_System
+
+namespace Modules.Core.Systems.Card_System.Sub_Systems
 {
     public class DrawCardSystem
     {

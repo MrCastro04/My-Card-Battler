@@ -3,7 +3,7 @@ using System.Linq;
 using Modules.Content.Card.Scripts;
 using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Systems.Deck_System
 {
     public class DeckSystem
     {

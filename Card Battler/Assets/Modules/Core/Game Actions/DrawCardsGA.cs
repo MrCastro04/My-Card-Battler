@@ -1,6 +1,6 @@
 ﻿using Modules.Core.Systems.Action_System.Scripts;
 
-namespace Modules.New.Game_Actions
+namespace Modules.Core.Game_Actions
 {
     public class DrawCardsGA : GameAction
     {
