@@ -17,7 +17,6 @@ namespace Modules.Core.Systems.Hand_System
 
         public Vector3 HandPosition { get; private set; }
         
-
         [Inject] public HandSystem(int maxHandSize, SplineContainer splineContainer, Vector3 handPosition)
         {
             _splineContainer = splineContainer;

@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e230f04c7c46abad635acb64dbb0ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testSystem: {fileID: 3669197252888456019, guid: 0d103695dccb30346a566f3bdbc02e12, type: 3}
   _actionSystemPrefab: {fileID: 7013636834265732811}
+  _handSize: 8
+  _splineContainer: {fileID: 3115648880995060583, guid: 2766fe8e00314ddf84ae737474f70669, type: 3}
+  _handPosition: {x: 0, y: -4, z: 0}
 --- !u!1001 &7395502773764431299
 PrefabInstance:
   m_ObjectHideFlags: 0
