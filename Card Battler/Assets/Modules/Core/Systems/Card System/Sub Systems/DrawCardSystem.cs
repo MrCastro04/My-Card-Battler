@@ -4,6 +4,7 @@ using Modules.Content.Hand.Scripts;
 using Modules.Core.Factories;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Deck_System;
+using Zenject;
 
 
 namespace Modules.Core.Systems.Card_System.Sub_Systems
@@ -14,6 +15,7 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems
         private readonly ICardViewFactory _cardViewFactory;
         private readonly IHand _hand;
 
+        [Inject]
         public DrawCardSystem(DeckSystem deckSystem, ICardViewFactory cardViewFactory, IHand hand)
         {
             _deckSystem = deckSystem;

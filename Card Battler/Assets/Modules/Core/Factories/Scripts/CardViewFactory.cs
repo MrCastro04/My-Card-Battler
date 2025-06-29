@@ -26,7 +26,7 @@ namespace Modules.Core.Factories.Scripts
         {
             CardView newCardView = _diContainer
                 .InstantiatePrefabForComponent<CardView>(_cardViewPrefab,position,quaternion.identity, null);
-            
+
             newCardView.Setup(cardModel);
             
             newCardView.transform.localScale = Vector3.zero;

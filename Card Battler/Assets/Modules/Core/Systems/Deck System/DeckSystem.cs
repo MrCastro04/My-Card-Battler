@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Modules.Core.Systems.Deck_System
 {
-    public class DeckSystem
+    public sealed class DeckSystem
     {
         private Queue<CardModel> _deck;
         

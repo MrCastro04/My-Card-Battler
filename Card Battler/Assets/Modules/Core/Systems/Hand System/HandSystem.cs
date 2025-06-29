@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Modules.Core.Systems.Hand_System
 {
-    public class HandSystem : IHand
+    public sealed class HandSystem : IHand
     {
         private readonly List<CardView> CardsInHand;
         private readonly SplineContainer _splineContainer;
