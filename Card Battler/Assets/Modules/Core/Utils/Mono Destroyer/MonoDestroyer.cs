@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Utils.Mono_Destroyer
 {
     public class MonoDestroyer : MonoBehaviour
     {

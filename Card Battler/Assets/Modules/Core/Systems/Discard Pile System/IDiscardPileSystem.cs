@@ -2,7 +2,7 @@
 using Modules.Content.Card.Scripts;
 using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Systems.Discard_Pile_System
 {
     public interface IDiscardPileSystem
     {
