@@ -3,10 +3,11 @@ using Modules.Content.Card.Scripts;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems;
+using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.Core.Systems.Deck_System;
 using Modules.Core.Systems.Hand_System;
 using Modules.Core.Systems.Test_System;
-using Modules.New;
+using Modules.@new;
 using UnityEngine;
 using UnityEngine.Splines;
 using Zenject;
@@ -22,19 +23,19 @@ namespace Modules.Core.Zenject.System_Installer
         [SerializeField] private Vector3 _handPosition;
         [SerializeField] private List<CardData> _startDeckData;
         [SerializeField] private CardView _highlightCardViewPrefab;
-        
+
         public override void InstallBindings()
         {
             BindActionSystem();
 
             BindDeckSystem();
-            
+
             BindHandSystem();
-            
+
             BindSubCardSystems();
-            
+
             BindCardSystem();
-            
+
             BindTestSystem();
         }
 
@@ -43,11 +44,22 @@ namespace Modules.Core.Zenject.System_Installer
             Container
                 .BindInterfacesAndSelfTo<DrawCardSystem>()
                 .AsSingle();
-            
+
             Container
                 .BindInterfacesAndSelfTo<HighlightCardSystem>()
                 .AsSingle()
                 .WithArguments(_highlightCardViewPrefab);
+
+            Container
+                .Bind<MouseUtil>()
+                .AsSingle();
+            
+            MouseUtil mouseUtilInstance = Container.Resolve<MouseUtil>();
+            
+            Container
+                .BindInterfacesAndSelfTo<CardInteractions>()
+                .AsSingle()
+                .WithArguments(mouseUtilInstance);
         }
 
         private void BindCardSystem()
@@ -61,7 +73,7 @@ namespace Modules.Core.Zenject.System_Installer
         private void BindDeckSystem()
         {
             Container
-                .Bind<DeckSystem>()
+                .BindInterfacesAndSelfTo<DeckSystem>()
                 .AsSingle()
                 .WithArguments(_startDeckData)
                 .NonLazy();

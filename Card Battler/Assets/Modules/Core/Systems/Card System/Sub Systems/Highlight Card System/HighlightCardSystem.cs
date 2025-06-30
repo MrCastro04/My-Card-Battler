@@ -1,7 +1,8 @@
 ﻿using Modules.Content.Card.Scripts;
+using Modules.New;
 using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System
 {
     public sealed class HighlightCardSystem : IHighlightCardSystem
     {

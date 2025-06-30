@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Modules.Content.Card.Scripts;
+using Modules.New;
 using UnityEngine;
 
 namespace Modules.Core.Systems.Deck_System
 {
-    public sealed class DeckSystem
+    public sealed class DeckSystem : IDeckSystem
     {
         private Queue<CardModel> _deck;
         
