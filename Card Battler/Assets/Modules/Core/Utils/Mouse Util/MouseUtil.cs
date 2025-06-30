@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-namespace Modules.@new
+namespace Modules.Core.Utils.Mouse_Util
 {
-    public class MouseUtil 
+    public class MouseUtil
     {
         private Camera _camera = Camera.main;
 
         public Vector3 GetMousePositionInWorldSpace(float zValue = 0)
         {
-            Plane dragPlane = new(_camera.transform.forward, new Vector3(0f,0f,zValue));
+            Plane dragPlane = new(_camera.transform.forward, new Vector3(0f, 0f, zValue));
 
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 

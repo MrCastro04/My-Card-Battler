@@ -1,6 +1,7 @@
 ﻿using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Utils.Mouse_Util;
 
-namespace Modules.@new
+namespace Modules.Content.Card.Scripts
 {
     public class CardInteractions : ICardInteractions
     {

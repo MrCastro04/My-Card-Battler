@@ -1,6 +1,4 @@
-﻿using System;
-using Modules.@new;
-using Modules.New;
+﻿using Modules.New;
 using TMPro;
 using UnityEngine;
 using Zenject;

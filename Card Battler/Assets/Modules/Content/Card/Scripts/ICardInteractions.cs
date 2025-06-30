@@ -1,4 +1,6 @@
-﻿namespace Modules.@new
+﻿using Modules.Core.Utils.Mouse_Util;
+
+namespace Modules.Content.Card.Scripts
 {
     public interface ICardInteractions
     {
