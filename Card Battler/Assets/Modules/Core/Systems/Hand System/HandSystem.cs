@@ -11,50 +11,73 @@ namespace Modules.Core.Systems.Hand_System
 {
     public sealed class HandSystem : IHand
     {
-        private readonly List<CardView> CardsInHand;
+        private readonly List<CardModel> _cardModelsInHand;
+        private readonly List<CardView> _cardsViewInHand;
         private readonly SplineContainer _splineContainer;
+        private readonly float _updateCardsInHandDuration;
         private readonly int _maxHandSize;
 
-        public Vector3 HandPosition { get; private set; }
-        
-        [Inject] public HandSystem(int maxHandSize, SplineContainer splineContainer, Vector3 handPosition)
+        public List<CardView> CardsViewInHand => _cardsViewInHand;
+        public Vector3 Position { get; }
+
+        [Inject]
+        public HandSystem(float updateCardsInHandDuration, int maxHandSize, SplineContainer splineContainer, Vector3 position)
         {
-            _splineContainer = splineContainer;
+            _cardModelsInHand = new();
+
+            _cardsViewInHand = new();
+
+            _updateCardsInHandDuration = updateCardsInHandDuration;
 
             _maxHandSize = maxHandSize;
 
-            HandPosition = handPosition;
+            _splineContainer = splineContainer;
 
-            CardsInHand = new();
+            Position = position;
         }
 
-        public IEnumerator AddCard(CardView cardView)
+        public IEnumerator AddCard(CardView newCardView)
         {
-            CardsInHand.Add(cardView);
+            CardModel newCardModel = newCardView.CardModel;
 
-            yield return UpdateCardsPosition(0.15f);
+            CardsViewInHand.Add(newCardView);
+
+            _cardModelsInHand.Add(newCardModel);
+
+            yield return UpdateCardsPosition(_updateCardsInHandDuration);
+        }
+
+        public IEnumerator RemoveCard(CardView discardedCardView)
+        {
+            CardModel discardedModel = discardedCardView.CardModel;
+
+            _cardsViewInHand.Remove(discardedCardView);
+
+            _cardModelsInHand.Remove(discardedModel);
+
+            yield return UpdateCardsPosition(_updateCardsInHandDuration);
         }
 
         public IEnumerator UpdateCardsPosition(float duration)
         {
-            if (CardsInHand.Count == 0) yield break;
+            if (CardsViewInHand.Count == 0) yield break;
 
             float cardSpacing = 1f / _maxHandSize;
 
-            float firstCardPosition = 0.5f - (CardsInHand.Count - 1) * cardSpacing / 2;
+            float firstCardPosition = 0.5f - (CardsViewInHand.Count - 1) * cardSpacing / 2;
 
             Spline spline = _splineContainer.Spline;
 
-            for (int i = 0; i < CardsInHand.Count; i++)
+            for (int i = 0; i < CardsViewInHand.Count; i++)
             {
                 float position = firstCardPosition + i * cardSpacing;
 
                 Vector3 splinePosition = spline.EvaluatePosition(position);
 
-                CardsInHand[i].transform
-                    .DOMove(splinePosition + HandPosition + cardSpacing * i * Vector3.back, duration);
+                CardsViewInHand[i].transform
+                    .DOMove(splinePosition + Position + cardSpacing * i * Vector3.back, duration);
 
-                CardsInHand[i].transform
+                CardsViewInHand[i].transform
                     .DORotate(Quaternion.identity.eulerAngles, duration);
             }
 

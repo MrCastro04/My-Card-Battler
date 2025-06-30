@@ -47,9 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testSystem: {fileID: 3669197252888456019, guid: 0d103695dccb30346a566f3bdbc02e12, type: 3}
   _actionSystemPrefab: {fileID: 7013636834265732811}
+  _updateCardsInHandDuration: 0.15
   _handSize: 8
   _splineContainer: {fileID: 3115648880995060583, guid: 2766fe8e00314ddf84ae737474f70669, type: 3}
   _handPosition: {x: 0, y: -4, z: 0}
+  _discardPilePosition: {x: 0, y: 4, z: 0}
   _startDeckData:
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
@@ -61,6 +63,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  _highlightCardViewPrefab: {fileID: 0}
+  _monoDestroyerPrefab: {fileID: 4346131451109043967, guid: a61de4ddeca32df48a4733bb3eb1787c, type: 3}
 --- !u!1001 &7395502773764431299
 PrefabInstance:
   m_ObjectHideFlags: 0

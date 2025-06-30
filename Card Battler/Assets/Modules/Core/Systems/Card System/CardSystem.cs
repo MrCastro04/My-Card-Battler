@@ -1,6 +1,4 @@
 ﻿using System;
-using Modules.Content.Hand.Scripts;
-using Modules.Core.Factories;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.New;
@@ -11,37 +9,27 @@ namespace Modules.Core.Systems.Card_System
     public sealed class CardSystem : IInitializable, IDisposable
     {
         private readonly ActionSystem _actionSystem;
-        private readonly IDeckSystem _deckSystem;
         private readonly IDrawCardSystem _drawCardSystem;
-        private readonly IHighlightCardSystem _highlightCardSystem;
-        private readonly ICardViewFactory _cardViewFactory;
-        private readonly IHand _hand;
+        private readonly IDiscardCardSystem _discardCardSystem;
 
         [Inject]
-        public CardSystem(
-            ActionSystem actionSystem,
-            IDeckSystem deckSystem ,
-            IDrawCardSystem drawCardSystem ,
-            IHighlightCardSystem highlightCardSystem ,
-            ICardViewFactory cardViewFactory,
-            IHand hand)
+        public CardSystem( ActionSystem actionSystem, IDrawCardSystem drawCardSystem , IDiscardCardSystem discardCardSystem )
         {
-            _actionSystem = actionSystem;
-            _deckSystem = deckSystem;
+            _actionSystem = actionSystem; 
             _drawCardSystem = drawCardSystem;
-            _highlightCardSystem = highlightCardSystem;
-            _cardViewFactory = cardViewFactory;
-            _hand = hand;
+            _discardCardSystem = discardCardSystem;
         }
 
         public void Initialize()
         {
             _actionSystem.AttachPerformer<DrawCardsGA>(_drawCardSystem.DrawCardsPerformer);
+            _actionSystem.AttachPerformer<DiscardCardsGA>(_discardCardSystem.DiscardCardPerformer);
         }
 
         public void Dispose()
         {
             _actionSystem.DetachPerformer<DrawCardsGA>();
+            _actionSystem.DetachPerformer<DiscardCardsGA>();
         }
     }
 }
