@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Modules.Core.Systems.Action_System.Scripts
 {
-    public class ActionSystem : MonoBehaviour
+    public sealed class ActionSystem : MonoBehaviour
     {
         private List<GameAction> _reactions = new();
 

@@ -4,16 +4,19 @@ using Modules.Content.Hand.Scripts;
 using Modules.Core.Factories;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Deck_System;
+using Modules.New;
+using Zenject;
 
 
 namespace Modules.Core.Systems.Card_System.Sub_Systems
 {
-    public class DrawCardSystem
+    public class DrawCardSystem : IDrawCardSystem
     {
         private readonly DeckSystem _deckSystem;
         private readonly ICardViewFactory _cardViewFactory;
         private readonly IHand _hand;
 
+        [Inject]
         public DrawCardSystem(DeckSystem deckSystem, ICardViewFactory cardViewFactory, IHand hand)
         {
             _deckSystem = deckSystem;
