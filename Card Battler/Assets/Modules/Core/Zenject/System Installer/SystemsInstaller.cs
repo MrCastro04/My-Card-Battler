@@ -22,6 +22,7 @@ namespace Modules.Core.Zenject.System_Installer
         [SerializeField] private SplineContainer _splineContainer;
         [SerializeField] private Vector3 _handPosition;
         [SerializeField] private List<CardData> _startDeckData;
+
         [SerializeField] private CardView _highlightCardViewPrefab;
 
         public override void InstallBindings()
@@ -37,6 +38,33 @@ namespace Modules.Core.Zenject.System_Installer
             BindCardSystem();
 
             BindTestSystem();
+        }
+
+        private void BindActionSystem()
+        {
+            Container
+                .Bind<ActionSystem>()
+                .FromInstance(_actionSystemPrefab)
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindDeckSystem()
+        {
+            Container
+                .BindInterfacesAndSelfTo<DeckSystem>()
+                .AsSingle()
+                .WithArguments(_startDeckData)
+                .NonLazy();
+        }
+
+        private void BindHandSystem()
+        {
+            Container
+                .BindInterfacesAndSelfTo<HandSystem>()
+                .AsSingle()
+                .WithArguments(_handPosition, _handSize, _splineContainer)
+                .NonLazy();
         }
 
         private void BindSubCardSystems()
@@ -70,24 +98,6 @@ namespace Modules.Core.Zenject.System_Installer
                 .NonLazy();
         }
 
-        private void BindDeckSystem()
-        {
-            Container
-                .BindInterfacesAndSelfTo<DeckSystem>()
-                .AsSingle()
-                .WithArguments(_startDeckData)
-                .NonLazy();
-        }
-
-        private void BindHandSystem()
-        {
-            Container
-                .BindInterfacesAndSelfTo<HandSystem>()
-                .AsSingle()
-                .WithArguments(_handPosition, _handSize, _splineContainer)
-                .NonLazy();
-        }
-
         private void BindTestSystem()
         {
             TestSystem testSystemInstance = Container
@@ -97,15 +107,6 @@ namespace Modules.Core.Zenject.System_Installer
                 .BindInterfacesAndSelfTo<TestSystem>()
                 .FromInstance(testSystemInstance)
                 .AsSingle();
-        }
-
-        private void BindActionSystem()
-        {
-            Container
-                .Bind<ActionSystem>()
-                .FromInstance(_actionSystemPrefab)
-                .AsSingle()
-                .NonLazy();
         }
     }
 }
