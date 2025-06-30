@@ -2,13 +2,15 @@
 using Modules.Content.Card.Scripts;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Card_System;
+using Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Draw_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.Core.Systems.Deck_System;
+using Modules.Core.Systems.Discard_Pile_System;
 using Modules.Core.Systems.Hand_System;
 using Modules.Core.Systems.Test_System;
+using Modules.Core.Utils.Mono_Destroyer;
 using Modules.Core.Utils.Mouse_Util;
-using Modules.New;
 using UnityEngine;
 using UnityEngine.Splines;
 using Zenject;
@@ -27,18 +29,19 @@ namespace Modules.Core.Zenject.System_Installer
         [SerializeField] private List<CardData> _startDeckData;
         [SerializeField] private CardView _highlightCardViewPrefab;
         [SerializeField] private MonoDestroyer _monoDestroyerPrefab;
+
         public override void InstallBindings()
         {
             BindMonoDestroyer();
 
             BindActionSystem();
-            
+
             BindHandSystem();
 
             BindDeckSystem();
 
             BindDiscardPileSystem();
-            
+
             BindSubCardSystems();
 
             BindCardSystem();
@@ -90,7 +93,7 @@ namespace Modules.Core.Zenject.System_Installer
             Container
                 .BindInterfacesAndSelfTo<HandSystem>()
                 .AsSingle()
-                .WithArguments(_updateCardsInHandDuration , _handPosition, _handSize, _splineContainer)
+                .WithArguments(_updateCardsInHandDuration, _handPosition, _handSize, _splineContainer)
                 .NonLazy();
         }
 
@@ -116,9 +119,9 @@ namespace Modules.Core.Zenject.System_Installer
                 .Bind<MouseUtil>()
                 .AsSingle()
                 .NonLazy();
-            
+
             MouseUtil mouseUtilInstance = Container.Resolve<MouseUtil>();
-            
+
             Container
                 .BindInterfacesAndSelfTo<CardInteractions>()
                 .AsSingle()
