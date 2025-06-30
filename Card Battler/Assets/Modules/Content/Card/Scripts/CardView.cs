@@ -14,9 +14,10 @@ namespace Modules.Content.Card.Scripts
 
         private IHighlightCardSystem _highlightCardSystem;
         private ICardInteractions _cardInteractions;
-        private CardModel _cardModel;
         private Vector3 _positionBeforeDrag;
         private Quaternion _rotationBeforeDrag;
+
+        public CardModel CardModel { get; private set; }
 
         [Inject]
         private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions)
@@ -28,7 +29,7 @@ namespace Modules.Content.Card.Scripts
 
         public void Setup(CardModel cardModel)
         {
-            _cardModel = cardModel;
+            CardModel = cardModel;
 
             _mana.text = cardModel.ManaAmount.ToString();
 
@@ -46,7 +47,7 @@ namespace Modules.Content.Card.Scripts
 
             Vector3 highlightPos = new(transform.position.x, transform.position.y + 2, transform.position.z);
 
-            _highlightCardSystem.Show(_cardModel, highlightPos);
+            _highlightCardSystem.Show(CardModel, highlightPos);
         }
 
         private void OnMouseExit()

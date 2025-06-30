@@ -7,8 +7,7 @@ using Modules.Core.Systems.Deck_System;
 using Modules.New;
 using Zenject;
 
-
-namespace Modules.Core.Systems.Card_System.Sub_Systems
+namespace Modules.Core.Systems.Card_System.Sub_Systems.Draw_Card_System
 {
     public class DrawCardSystem : IDrawCardSystem
     {

@@ -3,6 +3,7 @@ using System.Linq;
 using Modules.Content.Card.Scripts;
 using Modules.New;
 using UnityEngine;
+using Zenject;
 
 namespace Modules.Core.Systems.Deck_System
 {
@@ -12,11 +13,14 @@ namespace Modules.Core.Systems.Deck_System
         
         public Vector3 Position => Vector3.zero;
 
-        public DeckSystem(List<CardData> startDeckData)
+       [Inject]
+       public DeckSystem(List<CardData> startDeckData)
         {
             _deck = new();
 
             Setup(startDeckData);
+            
+            Debug.Log($"Cards in deck - {_deck.Count}");
         }
 
         public CardModel GetCardModel()
