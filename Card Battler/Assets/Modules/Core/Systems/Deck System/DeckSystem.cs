@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Modules.Content;
 using Modules.Content.Card.Scripts;
 using Modules.New;
 using UnityEngine;
@@ -9,23 +10,25 @@ namespace Modules.Core.Systems.Deck_System
 {
     public sealed class DeckSystem : IDeckSystem
     {
-        private Queue<CardModel> _deck;
-        
-        public Vector3 Position => Vector3.zero;
+        private Queue<CardModel> _unitsDeck;
 
-       [Inject]
-       public DeckSystem(List<CardData> startDeckData)
+        public DeckMono DeckMono { get; private set; }
+        public Queue<CardModel> UnitsDeck => _unitsDeck;
+        public Vector3 Position => DeckMono.transform.position;
+
+        [Inject]
+        public DeckSystem(List<CardData> startDeckData, DeckMono deckMono)
         {
-            _deck = new();
+            _unitsDeck = new();
+
+            DeckMono = deckMono;
 
             Setup(startDeckData);
-            
-            Debug.Log($"Cards in deck - {_deck.Count}");
         }
 
         public CardModel GetCardModel()
         {
-            return _deck.Dequeue();
+            return _unitsDeck.Dequeue();
         }
 
         private void Setup(List<CardData> deckData)
@@ -35,7 +38,7 @@ namespace Modules.Core.Systems.Deck_System
                 .OrderBy(data => Random.Range(0, deckData.Count))
                 .ToList();
 
-            _deck = new(shuffledDeck);
+            _unitsDeck = new(shuffledDeck);
         }
     }
 }

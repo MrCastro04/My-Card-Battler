@@ -24,7 +24,8 @@ namespace Modules.Content.Card.Scripts
         public CardModel CardModel { get; private set; }
 
         [Inject]
-        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions, ActionSystem actionSystem)
+        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions,
+            ActionSystem actionSystem)
         {
             _highlightCardSystem = highlightCardSystem;
 
@@ -70,15 +71,15 @@ namespace Modules.Content.Card.Scripts
         {
             if (_cardInteractions.CanInteract() == false)
                 return;
-            
+
             _cardInteractions.SetDragStatus(true);
-            
+
             _wrapper.SetActive(true);
-            
+
             _highlightCardSystem.Hide();
 
             _rotationBeforeDrag = transform.rotation;
-            
+
             _positionBeforeDrag = transform.position;
 
             transform.rotation = Quaternion.identity;
@@ -88,7 +89,7 @@ namespace Modules.Content.Card.Scripts
 
         private void OnMouseDrag()
         {
-            if(_cardInteractions.CanInteract() == false)
+            if (_cardInteractions.CanInteract() == false)
                 return;
 
             transform.position = _cardInteractions.MouseUtil.GetMousePositionInWorldSpace(-1);
@@ -96,24 +97,33 @@ namespace Modules.Content.Card.Scripts
 
         private void OnMouseUp()
         {
-            if(_cardInteractions.CanInteract() == false)
+            if (_cardInteractions.CanInteract() == false)
                 return;
 
-            if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f,_playZoneMask)
-            && hitInfo.collider != null)
+            if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f, _playZoneMask)
+                && hitInfo.collider != null)
             {
-                DiscardCardsGA discardCardsGa = new(this);
+                DisableCollider();
                 
+                DiscardCardsGA discardCardsGa = new(this);
+
                 _actionSystem.Perform(discardCardsGa);
             }
             else
             {
                 transform.rotation = _rotationBeforeDrag;
-                
+
                 transform.position = _positionBeforeDrag;
             }
-            
+
             _cardInteractions.SetDragStatus(false);
+        }
+
+        private void DisableCollider()
+        {
+            Collider collider = gameObject.GetComponent<Collider>();
+
+            collider.enabled = false; 
         }
     }
 }

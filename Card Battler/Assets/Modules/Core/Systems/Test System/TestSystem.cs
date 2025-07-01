@@ -25,6 +25,8 @@ namespace Modules.Core.Systems.Test_System
 
             DrawCardsGA drawCardsGa = new(3);
             
+            _actionSystem.AddReaction(drawCardsGa);
+            
             _actionSystem.Perform(drawCardsGa);
         }
     }

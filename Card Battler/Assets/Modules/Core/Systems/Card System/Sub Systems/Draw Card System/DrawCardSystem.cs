@@ -3,6 +3,7 @@ using Modules.Content.Card.Scripts;
 using Modules.Content.Hand.Scripts;
 using Modules.Core.Factories;
 using Modules.Core.Game_Actions;
+using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Deck_System;
 using Modules.New;
 using Zenject;
@@ -11,13 +12,16 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Draw_Card_System
 {
     public class DrawCardSystem : IDrawCardSystem
     {
+        private readonly ActionSystem _actionSystem;
         private readonly DeckSystem _deckSystem;
         private readonly ICardViewFactory _cardViewFactory;
         private readonly IHand _hand;
 
         [Inject]
-        public DrawCardSystem(DeckSystem deckSystem, ICardViewFactory cardViewFactory, IHand hand)
+        public DrawCardSystem(ActionSystem actionSystem,DeckSystem deckSystem, ICardViewFactory cardViewFactory, IHand hand)
         {
+            _actionSystem = actionSystem;
+            
             _deckSystem = deckSystem;
 
             _cardViewFactory = cardViewFactory;
@@ -28,7 +32,10 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Draw_Card_System
         public IEnumerator DrawCardsPerformer(DrawCardsGA drawCardsGa)
         {
             for (int i = 0; i < drawCardsGa.DrawAmount; i++)
+            {
                 yield return Draw();
+            }
+      
         }
 
         private IEnumerator Draw()
