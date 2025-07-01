@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Modules.Content.Card.Scripts;
 using Modules.Content.Hand.Scripts;
+using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Discard_Pile_System;
 using Modules.Core.Utils.Mono_Destroyer;
 using Modules.New;
@@ -37,6 +38,10 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System
                 }
 
                 _hand.CardsViewInHand.Clear();
+            }
+            else
+            {
+                yield return DiscardCard(discardCardsGa.SelectedCardView);
             }
         }
 
