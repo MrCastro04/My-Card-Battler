@@ -1,12 +1,13 @@
 ﻿using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
 using UnityEngine;
+using Zenject;
 
 namespace Modules.New
 {
     public class DiscardAllCardsButton : MonoBehaviour
     {
-        [SerializeField] private ActionSystem _actionSystem;
+        [Inject] private ActionSystem _actionSystem;
 
         public void OnClick()
         {
