@@ -1,17 +1,27 @@
-﻿using Modules.Core.Systems.Action_System.Scripts;
+﻿using Modules.Content.Card.Scripts;
+using Modules.Core.Systems.Action_System.Scripts;
 
-namespace Modules.New
+namespace Modules.Core.Game_Actions
 {
     public class DiscardCardsGA : GameAction
     {
-        public readonly int DiscardAmount;
+        public readonly CardView SelectedCardView = null;
+        public readonly int DiscardAmount = 0;
         public readonly bool IsAllCardsInHand = false;
 
-        public DiscardCardsGA(int discardAmount, bool isAllCardsInHand = false)
+        public DiscardCardsGA(bool isAllCardsInHand)
+        {
+            IsAllCardsInHand = isAllCardsInHand;
+        }
+
+        public DiscardCardsGA(int discardAmount)
         {
             DiscardAmount = discardAmount;
+        }
 
-            IsAllCardsInHand = isAllCardsInHand;
+        public DiscardCardsGA(CardView selectedCardView)
+        {
+            SelectedCardView = selectedCardView;
         }
     }
 }

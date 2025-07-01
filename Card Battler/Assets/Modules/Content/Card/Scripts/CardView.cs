@@ -1,4 +1,6 @@
-﻿using Modules.New;
+﻿using Modules.Core.Game_Actions;
+using Modules.Core.Systems.Action_System.Scripts;
+using Modules.New;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -11,20 +13,24 @@ namespace Modules.Content.Card.Scripts
         [SerializeField] private TMP_Text _name;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private GameObject _wrapper;
+        [SerializeField] private LayerMask _playZoneMask;
 
         private IHighlightCardSystem _highlightCardSystem;
         private ICardInteractions _cardInteractions;
+        private ActionSystem _actionSystem;
         private Vector3 _positionBeforeDrag;
         private Quaternion _rotationBeforeDrag;
 
         public CardModel CardModel { get; private set; }
 
         [Inject]
-        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions)
+        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions, ActionSystem actionSystem)
         {
             _highlightCardSystem = highlightCardSystem;
 
             _cardInteractions = cardInteractions;
+
+            _actionSystem = actionSystem;
         }
 
         public void Setup(CardModel cardModel)
@@ -93,9 +99,12 @@ namespace Modules.Content.Card.Scripts
             if(_cardInteractions.CanInteract() == false)
                 return;
 
-            if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f))
+            if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f,_playZoneMask)
+            && hitInfo.collider != null)
             {
-                // play card
+                DiscardCardsGA discardCardsGa = new(this);
+                
+                _actionSystem.Perform(discardCardsGa);
             }
             else
             {

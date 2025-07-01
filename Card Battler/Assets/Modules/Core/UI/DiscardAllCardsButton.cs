@@ -1,4 +1,5 @@
-﻿using Modules.Core.Systems.Action_System.Scripts;
+﻿using Modules.Core.Game_Actions;
+using Modules.Core.Systems.Action_System.Scripts;
 using UnityEngine;
 
 namespace Modules.New
@@ -9,7 +10,7 @@ namespace Modules.New
 
         public void OnClick()
         {
-            DiscardCardsGA discardCardsGa = new(3, true);
+            DiscardCardsGA discardCardsGa = new(true);
             
             _actionSystem.Perform(discardCardsGa);
         } 

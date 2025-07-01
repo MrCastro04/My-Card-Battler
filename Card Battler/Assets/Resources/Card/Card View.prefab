@@ -609,6 +609,9 @@ MonoBehaviour:
   _name: {fileID: 4017489926157168142}
   _spriteRenderer: {fileID: 3500196979411023948}
   _wrapper: {fileID: 4160403377217774560}
+  _playZoneMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!65 &2737747677741494953
 BoxCollider:
   m_ObjectHideFlags: 0
