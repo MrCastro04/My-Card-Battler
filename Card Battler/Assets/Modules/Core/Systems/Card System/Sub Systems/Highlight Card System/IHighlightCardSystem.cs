@@ -1,7 +1,7 @@
 ﻿using Modules.Content.Card.Scripts;
 using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System
 {
     public interface IHighlightCardSystem
     {

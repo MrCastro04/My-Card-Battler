@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using Modules.Content;
 using Modules.Content.Card.Scripts;
 using Modules.Content.Deck;
 using Modules.Core.Systems.Deck_System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Modules.Core.Zenject.Systems_Installers.Deck_System_Installer
@@ -35,12 +33,12 @@ namespace Modules.Core.Zenject.Systems_Installers.Deck_System_Installer
 
         private void BindDeckSystem()
         {
-            DeckUnitsMono _deckUnitsMonoResolve = Container.Resolve<DeckUnitsMono>();
+            DeckUnitsMono deckUnitsMonoResolve = Container.Resolve<DeckUnitsMono>();
             
             Container
                 .BindInterfacesAndSelfTo<DeckSystem>()
                 .AsSingle()
-                .WithArguments(_startDeckData,_deckUnitsMonoResolve)
+                .WithArguments(_startDeckData,deckUnitsMonoResolve)
                 .NonLazy();
         }
     }

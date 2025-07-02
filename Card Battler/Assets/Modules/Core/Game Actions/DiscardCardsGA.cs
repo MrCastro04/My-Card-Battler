@@ -6,17 +6,11 @@ namespace Modules.Core.Game_Actions
     public class DiscardCardsGA : GameAction
     {
         public readonly CardView SelectedCardView = null;
-        public readonly int DiscardAmount = 0;
         public readonly bool IsAllCardsInHand = false;
 
         public DiscardCardsGA(bool isAllCardsInHand)
         {
             IsAllCardsInHand = isAllCardsInHand;
-        }
-
-        public DiscardCardsGA(int discardAmount)
-        {
-            DiscardAmount = discardAmount;
         }
 
         public DiscardCardsGA(CardView selectedCardView)

@@ -14,16 +14,13 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System
     {
         private readonly DiscardPileSystem _discardPileSystem;
         private readonly IHand _hand;
-        private readonly MonoDestroyer _monoDestroyer;
 
         [Inject]
-        public DiscardCardSystem(DiscardPileSystem discardPileSystem, IHand hand, MonoDestroyer monoDestroyer)
+        public DiscardCardSystem(DiscardPileSystem discardPileSystem, IHand hand)
         {
             _discardPileSystem = discardPileSystem;
 
             _hand = hand;
-
-            _monoDestroyer = monoDestroyer;
         }
 
         public IEnumerator DiscardCardPerformer(DiscardCardsGA discardCardsGa)
