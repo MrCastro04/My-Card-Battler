@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc94bfec9a4d4dc0b0429ef7cc5005f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _discardPilePosition: {x: -6, y: 0, z: 0}
+  _downOffsetFromDeck: -8

@@ -54,8 +54,6 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System
             yield return tween.WaitForCompletion();
 
             yield return _hand.RemoveCard(discardedCardView);
-
-            _monoDestroyer.Kill(discardedCardView.gameObject);
         }
     }
 }

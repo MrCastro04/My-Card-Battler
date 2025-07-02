@@ -235,6 +235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7989999462274072062}
     m_Modifications:
+    - target: {fileID: 1141979482144749803, guid: 1bcb746f00f66d74ca7b9615d9f4972e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1917116969539476707, guid: 1bcb746f00f66d74ca7b9615d9f4972e, type: 3}
       propertyPath: m_Name
       value: Hand System Installer
@@ -278,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 3187178768481092598, guid: 1bcb746f00f66d74ca7b9615d9f4972e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007274206028032712, guid: 1bcb746f00f66d74ca7b9615d9f4972e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -527,6 +535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7989999462274072062}
     m_Modifications:
+    - target: {fileID: 1217878681467932774, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7329687378977022998, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.5
