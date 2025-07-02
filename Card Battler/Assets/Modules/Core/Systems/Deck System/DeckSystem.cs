@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Modules.Content;
 using Modules.Content.Card.Scripts;
-using Modules.New;
+using Modules.Content.Deck;
 using UnityEngine;
 using Zenject;
 
@@ -10,35 +9,32 @@ namespace Modules.Core.Systems.Deck_System
 {
     public sealed class DeckSystem : IDeckSystem
     {
-        private Queue<CardModel> _unitsDeck;
-
-        public DeckMono DeckMono { get; private set; }
-        public Queue<CardModel> UnitsDeck => _unitsDeck;
-        public Vector3 Position => DeckMono.transform.position;
+        public DeckUnitsMono DeckUnitsMono { get; }
+        public Vector3 Position => DeckUnitsMono.transform.position;
 
         [Inject]
-        public DeckSystem(List<CardData> startDeckData, DeckMono deckMono)
+        public DeckSystem(List<CardData> startDeckUnitsData, DeckUnitsMono deckUnitsMono)
         {
-            _unitsDeck = new();
+            DeckUnitsMono = deckUnitsMono;
 
-            DeckMono = deckMono;
-
-            Setup(startDeckData);
+            DeckUnitsMono.Setup(InitializeDeck(startDeckUnitsData));
         }
 
-        public CardModel GetCardModel()
+        public CardModel GetCardModel(Queue<CardModel> deck)
         {
-            return _unitsDeck.Dequeue();
+            return deck.Dequeue();
         }
 
-        private void Setup(List<CardData> deckData)
+        private Queue<CardModel> InitializeDeck(List<CardData> startDeckData)
         {
-            List<CardModel> shuffledDeck = deckData
+            List<CardModel> shuffledList = startDeckData
                 .Select(data => new CardModel(data))
-                .OrderBy(data => Random.Range(0, deckData.Count))
+                .OrderBy(model => Random.Range(0, startDeckData.Count))
                 .ToList();
 
-            _unitsDeck = new(shuffledDeck);
+            Queue<CardModel> initializedDeck = new(shuffledList);
+
+            return initializedDeck;
         }
     }
 }

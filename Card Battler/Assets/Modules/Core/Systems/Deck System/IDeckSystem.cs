@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using Modules.Content;
 using Modules.Content.Card.Scripts;
+using Modules.Content.Deck;
 
-namespace Modules.New
+namespace Modules.Core.Systems.Deck_System
 {
     public interface IDeckSystem
     {
-        DeckMono DeckMono { get; }
-        Queue<CardModel> UnitsDeck { get; }
-        CardModel GetCardModel();
+        DeckUnitsMono DeckUnitsMono { get; }
+        CardModel GetCardModel(Queue<CardModel> deck);
     }
 }
