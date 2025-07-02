@@ -24,8 +24,7 @@ namespace Modules.Content.Card.Scripts
         public CardModel CardModel { get; private set; }
 
         [Inject]
-        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions,
-            ActionSystem actionSystem)
+        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions, ActionSystem actionSystem)
         {
             _highlightCardSystem = highlightCardSystem;
 

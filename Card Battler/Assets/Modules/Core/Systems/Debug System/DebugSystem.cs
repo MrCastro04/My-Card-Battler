@@ -32,7 +32,7 @@ namespace Modules.Core.Systems.Debug_System
 
         private void PostDrawCardReaction(DrawCardsGA drawCardsGa)
         {
-            Debug.Log($"Cards in Units Deck - {_deckSystem.UnitsDeck.Count}");
+            Debug.Log($"Cards in Units Deck - {_deckSystem.DeckUnitsMono.Deck.Count}");
         }
     }
 }

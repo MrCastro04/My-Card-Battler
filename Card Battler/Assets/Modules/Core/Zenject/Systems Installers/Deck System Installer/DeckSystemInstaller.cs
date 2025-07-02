@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using Modules.Content;
 using Modules.Content.Card.Scripts;
+using Modules.Content.Deck;
 using Modules.Core.Systems.Deck_System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
-namespace Modules.New
+namespace Modules.Core.Zenject.Systems_Installers.Deck_System_Installer
 {
     public class DeckSystemInstaller : MonoInstaller
     {
         [SerializeField] private List<CardData> _startDeckData;
-        [SerializeField] private DeckMono _deckMonoPrefab;
+        [SerializeField] private DeckUnitsMono deckUnitsMonoPrefab;
+        [SerializeField] private Transform _deckTransform;
         
         public override void InstallBindings()
         {
@@ -19,24 +22,26 @@ namespace Modules.New
             BindDeckSystem();
         }
 
+        private void BindDeckMono()
+        {
+            DeckUnitsMono deckUnitsMonoInstance = Container
+                .InstantiatePrefabForComponent<DeckUnitsMono>(deckUnitsMonoPrefab,_deckTransform.position,Quaternion.identity, gameObject.transform);
+
+            Container
+                .BindInterfacesAndSelfTo<DeckUnitsMono>()
+                .FromInstance(deckUnitsMonoInstance)
+                .AsSingle();
+        }
+
         private void BindDeckSystem()
         {
+            DeckUnitsMono _deckUnitsMonoResolve = Container.Resolve<DeckUnitsMono>();
+            
             Container
                 .BindInterfacesAndSelfTo<DeckSystem>()
                 .AsSingle()
-                .WithArguments(_startDeckData)
+                .WithArguments(_startDeckData,_deckUnitsMonoResolve)
                 .NonLazy();
-        }
-
-        private void BindDeckMono()
-        {
-            DeckMono deckMonoInstance = Container
-                .InstantiatePrefabForComponent<DeckMono>(_deckMonoPrefab);
-
-            Container
-                .BindInterfacesAndSelfTo<DeckMono>()
-                .FromInstance(deckMonoInstance)
-                .AsCached();
         }
     }
 }
