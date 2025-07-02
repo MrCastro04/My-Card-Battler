@@ -11,6 +11,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Hand_System_Installer
         [SerializeField] private int _handSize;
         [SerializeField] private Transform _handTransform;
         [SerializeField] private SplineContainer _splineContainer;
+        
         public override void InstallBindings()
         {
             Container
