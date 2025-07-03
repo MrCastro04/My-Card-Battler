@@ -3,11 +3,13 @@ using Modules.Core.Systems.Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Draw_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
+using Modules.Core.Systems.Card_System.Sub_Systems.Play_Card_System;
 using Modules.Core.Utils.Mouse_Util;
+using Modules.New;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.New
+namespace Modules.Core.Zenject.Systems_Installers.Card_System_Installer
 {
     public class CardSystemInstaller : MonoInstaller
     {
@@ -15,6 +17,8 @@ namespace Modules.New
         
         public override void InstallBindings()
         {
+            BindPlayCardSystem();
+            
             BindDrawCardSystem();
 
             BindDiscardCardSystem();
@@ -24,6 +28,13 @@ namespace Modules.New
             BindCardInteractions();
 
             BindCardSystem();
+        }
+
+        private void BindPlayCardSystem()
+        {
+            Container.BindInterfacesAndSelfTo<PlayCardSystem>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindCardSystem()

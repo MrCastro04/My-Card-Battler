@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Deck Position
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1217878681467932774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -17.5, y: -5.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7843239078874903624}
-  - component: {fileID: 4600283760497104039}
+  - component: {fileID: 8087500728813759331}
   m_Layer: 0
   m_Name: Deck System Installer
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   - {fileID: 7329687378977022998}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4600283760497104039
+--- !u!114 &8087500728813759331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,6 +77,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startDeckData:
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+  - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
   - {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}

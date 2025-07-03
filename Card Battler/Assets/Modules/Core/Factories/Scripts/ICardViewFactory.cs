@@ -1,7 +1,7 @@
 ﻿using Modules.Content.Card.Scripts;
 using UnityEngine;
 
-namespace Modules.Core.Factories
+namespace Modules.Core.Factories.Scripts
 {
     public interface ICardViewFactory
     {

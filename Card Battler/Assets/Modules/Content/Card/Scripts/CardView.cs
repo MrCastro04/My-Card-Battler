@@ -1,5 +1,6 @@
 ﻿using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.New;
 using TMPro;
 using UnityEngine;
@@ -18,19 +19,26 @@ namespace Modules.Content.Card.Scripts
         private IHighlightCardSystem _highlightCardSystem;
         private ICardInteractions _cardInteractions;
         private ActionSystem _actionSystem;
+        private IManaSystem _manaSystem;
         private Vector3 _positionBeforeDrag;
         private Quaternion _rotationBeforeDrag;
 
         public CardModel CardModel { get; private set; }
 
         [Inject]
-        private void Construct(IHighlightCardSystem highlightCardSystem, ICardInteractions cardInteractions, ActionSystem actionSystem)
+        private void Construct(
+            IHighlightCardSystem highlightCardSystem, 
+            ICardInteractions cardInteractions,
+            ActionSystem actionSystem,
+            IManaSystem manaSystem)
         {
             _highlightCardSystem = highlightCardSystem;
 
             _cardInteractions = cardInteractions;
 
             _actionSystem = actionSystem;
+
+            _manaSystem = manaSystem;
         }
 
         public void Setup(CardModel cardModel)
@@ -98,15 +106,16 @@ namespace Modules.Content.Card.Scripts
         {
             if (_cardInteractions.CanInteract() == false)
                 return;
-
+            
             if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f, _playZoneMask)
-                && hitInfo.collider != null)
+                && hitInfo.collider != null
+                && _manaSystem.IsManaEnough(CardModel.ManaAmount))
             {
                 DisableCollider();
-                
-                DiscardCardsGA discardCardsGa = new(this);
 
-                _actionSystem.Perform(discardCardsGa);
+                PlayCardGA playCardGa = new(this);
+                
+                _actionSystem.Perform(playCardGa);
             }
             else
             {
