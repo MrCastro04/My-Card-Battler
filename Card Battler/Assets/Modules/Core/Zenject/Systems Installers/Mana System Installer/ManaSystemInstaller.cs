@@ -10,6 +10,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Mana_System_Installer
         [SerializeField] private int _maxMana;
         [SerializeField] private ManaView _manaViewPrefab;
         [SerializeField] private Transform _manaViewTransform;
+        
         public override void InstallBindings()
         {
             BindManaView();
