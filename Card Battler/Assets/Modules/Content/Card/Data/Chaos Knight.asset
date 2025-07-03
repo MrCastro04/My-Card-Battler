@@ -15,3 +15,4 @@ MonoBehaviour:
   <ManaAmount>k__BackingField: 4
   <Name>k__BackingField: Chaos Knight
   <Image>k__BackingField: {fileID: 21300000, guid: 89de710eb858e254b9b33a993f2c6fe4, type: 3}
+  <CardType>k__BackingField: 0

@@ -8,13 +8,35 @@ namespace Modules.Core.Zenject.Systems_Installers.Mana_System_Installer
     public class ManaSystemInstaller : MonoInstaller
     {
         [SerializeField] private int _maxMana;
-        
+        [SerializeField] private ManaView _manaViewPrefab;
+        [SerializeField] private Transform _manaViewTransform;
         public override void InstallBindings()
         {
+            BindManaView();
+            
+            BindManaSystem();
+        }
+
+        private void BindManaView()
+        {
+            ManaView manaViewInstance = Container
+                .InstantiatePrefabForComponent<ManaView>(_manaViewPrefab, _manaViewTransform.position,
+                    _manaViewTransform.rotation, gameObject.transform);
+
+            Container
+                .BindInterfacesAndSelfTo<ManaView>()
+                .FromInstance(manaViewInstance)
+                .AsSingle();
+        }
+
+        private void BindManaSystem()
+        {
+            ManaView manaViewResolve = Container.Resolve<ManaView>();
+
             Container
                 .BindInterfacesAndSelfTo<ManaSystem>()
                 .AsSingle()
-                .WithArguments(_maxMana);
+                .WithArguments(manaViewResolve, _maxMana);
         }
     }
 }
