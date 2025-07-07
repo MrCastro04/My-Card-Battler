@@ -17,8 +17,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Hand_System_Installer
             Container
                 .BindInterfacesAndSelfTo<HandSystem>()
                 .AsSingle()
-                .WithArguments(_updateCardsInHandDuration, _handTransform.position, _handSize, _splineContainer)
-                .NonLazy();
+                .WithArguments(_updateCardsInHandDuration, _handTransform.position, _handSize, _splineContainer);
         }
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Modules.New
+namespace Modules.Core.Zenject.Systems_Installers.Action_System_Installer
 {
     public class ActionSystemInstaller : MonoInstaller
     {
@@ -16,8 +16,7 @@ namespace Modules.New
             Container
                 .Bind<ActionSystem>()
                 .FromInstance(actionSystemInstance)
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
         }
     }
 }

@@ -9,8 +9,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Turn_System_Installer
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<TurnSystem>()
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
         }
     }
 }

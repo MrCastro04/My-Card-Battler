@@ -20,8 +20,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Discard_Pile_System_Installer
             Container
                 .BindInterfacesAndSelfTo<DiscardPileSystem>()
                 .AsSingle()
-                .WithArguments(discardPilePosition)
-                .NonLazy();
+                .WithArguments(discardPilePosition);
         }
     }
 }
