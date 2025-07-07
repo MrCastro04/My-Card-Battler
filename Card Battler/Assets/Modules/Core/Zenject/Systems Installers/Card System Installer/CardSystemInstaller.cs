@@ -4,8 +4,6 @@ using Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Draw_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Play_Card_System;
-using Modules.Core.Utils.Mouse_Util;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 
@@ -14,7 +12,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Card_System_Installer
     public class CardSystemInstaller : MonoInstaller
     {
         [SerializeField] private CardView _highlightCardViewPrefab;
-        
+
         public override void InstallBindings()
         {
             BindPlayCardSystem();
@@ -33,27 +31,21 @@ namespace Modules.Core.Zenject.Systems_Installers.Card_System_Installer
         private void BindPlayCardSystem()
         {
             Container.BindInterfacesAndSelfTo<PlayCardSystem>()
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
         }
 
         private void BindCardSystem()
         {
             Container
                 .BindInterfacesAndSelfTo<CardSystem>()
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
         }
 
         private void BindCardInteractions()
         {
-            MouseUtil mouseUtilInstance = Container.Resolve<MouseUtil>();
-
             Container
                 .BindInterfacesAndSelfTo<CardInteractions>()
-                .AsSingle()
-                .WithArguments(mouseUtilInstance)
-                .NonLazy();
+                .AsSingle();
         }
 
         private void BindHighlightCardSystem()
@@ -61,24 +53,21 @@ namespace Modules.Core.Zenject.Systems_Installers.Card_System_Installer
             Container
                 .BindInterfacesAndSelfTo<HighlightCardSystem>()
                 .AsSingle()
-                .WithArguments(_highlightCardViewPrefab)
-                .NonLazy();
+                .WithArguments(_highlightCardViewPrefab);
         }
 
         private void BindDiscardCardSystem()
         {
             Container
                 .BindInterfacesAndSelfTo<DiscardCardSystem>()
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
         }
 
         private void BindDrawCardSystem()
         {
             Container
                 .BindInterfacesAndSelfTo<DrawCardSystem>()
-                .AsSingle()
-                .NonLazy();
+                .AsSingle();
         }
     }
 }

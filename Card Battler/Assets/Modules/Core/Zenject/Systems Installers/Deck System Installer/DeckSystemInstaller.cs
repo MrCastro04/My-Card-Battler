@@ -33,13 +33,10 @@ namespace Modules.Core.Zenject.Systems_Installers.Deck_System_Installer
 
         private void BindDeckSystem()
         {
-            DeckUnitsMono deckUnitsMonoResolve = Container.Resolve<DeckUnitsMono>();
-            
             Container
                 .BindInterfacesAndSelfTo<DeckSystem>()
                 .AsSingle()
-                .WithArguments(_startDeckData,deckUnitsMonoResolve)
-                .NonLazy();
+                .WithArguments(_startDeckData);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Battlefield_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.New;
 using TMPro;
@@ -16,6 +17,7 @@ namespace Modules.Content.Card.Scripts
         [SerializeField] private GameObject _wrapper;
         [SerializeField] private LayerMask _playZoneMask;
 
+        private BattlefieldSystem _battlefieldSystem;
         private IHighlightCardSystem _highlightCardSystem;
         private ICardInteractions _cardInteractions;
         private ActionSystem _actionSystem;
@@ -27,11 +29,14 @@ namespace Modules.Content.Card.Scripts
 
         [Inject]
         private void Construct(
-            IHighlightCardSystem highlightCardSystem, 
+            BattlefieldSystem battlefieldSystem,
+            IHighlightCardSystem highlightCardSystem,
             ICardInteractions cardInteractions,
             ActionSystem actionSystem,
             IManaSystem manaSystem)
         {
+            _battlefieldSystem = battlefieldSystem;
+
             _highlightCardSystem = highlightCardSystem;
 
             _cardInteractions = cardInteractions;
@@ -106,15 +111,15 @@ namespace Modules.Content.Card.Scripts
         {
             if (_cardInteractions.CanInteract() == false)
                 return;
-            
+
             if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f, _playZoneMask)
                 && hitInfo.collider != null
                 && _manaSystem.IsManaEnough(CardModel.ManaAmount))
             {
                 DisableCollider();
 
-                PlayCardGA playCardGa = new(this);
-                
+                PlayCardGA playCardGa = new(this, hitInfo);
+
                 _actionSystem.Perform(playCardGa);
             }
             else
@@ -131,7 +136,7 @@ namespace Modules.Content.Card.Scripts
         {
             Collider collider = gameObject.GetComponent<Collider>();
 
-            collider.enabled = false; 
+            collider.enabled = false;
         }
     }
 }

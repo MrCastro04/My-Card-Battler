@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Modules.New
+namespace Modules.Core.Zenject.Systems_Installers.Test_System_Installer
 {
     public class TestSystemInstaller : MonoInstaller
     {

@@ -2,7 +2,9 @@
 using Modules.Content.Card.Scripts;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Battlefield_System;
 using Modules.New;
+using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Systems.Card_System.Sub_Systems.Play_Card_System
@@ -22,20 +24,23 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Play_Card_System
 
         public IEnumerator PlayCardPerformer(PlayCardGA playCardGa)
         {
-            yield return PlayCard(playCardGa.PlayedCardView);
+            yield return PlayCard(playCardGa.PlayedCardView, playCardGa.HitInfo);
         }
 
-        private IEnumerator PlayCard(CardView playedCardView)
+        private IEnumerator PlayCard(CardView playedCardView, RaycastHit hitInfo)
         {
+            SlotPlayUnitMono slotPlayUnitMono = hitInfo.collider.GetComponent<SlotPlayUnitMono>();
+
             _manaSystem.SpendMana(playedCardView.CardModel.ManaAmount);
 
             switch (playedCardView.CardModel.CardType)
             {
                 case CardType.Unit:
+                    
+                    UnitEnterTheBattlefieldGA unitEnterTheBattlefieldGa = new(playedCardView,slotPlayUnitMono);
 
-                    DiscardCardsGA discardCardsGa = new(playedCardView);
+                    _actionSystem.AddReaction(unitEnterTheBattlefieldGa);
 
-                    _actionSystem.AddReaction(discardCardsGa);
                     break;
 
                 case CardType.Spell:

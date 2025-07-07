@@ -21,8 +21,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Mana_System_Installer
         private void BindManaView()
         {
             ManaView manaViewInstance = Container
-                .InstantiatePrefabForComponent<ManaView>(_manaViewPrefab, _manaViewTransform.position,
-                    _manaViewTransform.rotation, gameObject.transform);
+                .InstantiatePrefabForComponent<ManaView>(_manaViewPrefab, _manaViewTransform.position, _manaViewTransform.rotation, gameObject.transform);
 
             Container
                 .BindInterfacesAndSelfTo<ManaView>()
@@ -32,12 +31,10 @@ namespace Modules.Core.Zenject.Systems_Installers.Mana_System_Installer
 
         private void BindManaSystem()
         {
-            ManaView manaViewResolve = Container.Resolve<ManaView>();
-
             Container
                 .BindInterfacesAndSelfTo<ManaSystem>()
                 .AsSingle()
-                .WithArguments(manaViewResolve, _maxMana);
+                .WithArguments( _maxMana);
         }
     }
 }
