@@ -21,8 +21,6 @@ namespace Modules.Core.Systems.Test_System
 
         public void Initialize()
         {
-            _cardViewFactory.Load();
-
             PlayerStartTurnGA playerStartTurnGa = new();
             
             _actionSystem.Perform(playerStartTurnGa);

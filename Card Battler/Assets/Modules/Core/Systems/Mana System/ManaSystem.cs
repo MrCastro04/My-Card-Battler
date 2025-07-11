@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Modules.Core.Systems.Mana_System
 {
-    public class ManaSystem : IManaSystem
+    public class ManaSystem : IManaSystem, IInitializable
     {
         private readonly ManaView _manaView;
         private readonly int MAX_MANA;
@@ -17,8 +17,13 @@ namespace Modules.Core.Systems.Mana_System
             MAX_MANA = maxMana;
 
             _manaView = manaView;
+        }
 
+        public void Initialize()
+        {
             _currentMana = MAX_MANA;
+            
+            _manaView.UpdateManaText(_currentMana);
         }
 
         public bool IsManaEnough(int spendingMana)

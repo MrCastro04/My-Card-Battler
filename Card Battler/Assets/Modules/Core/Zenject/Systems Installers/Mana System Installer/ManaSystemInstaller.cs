@@ -34,7 +34,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Mana_System_Installer
             Container
                 .BindInterfacesAndSelfTo<ManaSystem>()
                 .AsSingle()
-                .WithArguments( _maxMana);
+                .WithArguments(_maxMana);
         }
     }
 }

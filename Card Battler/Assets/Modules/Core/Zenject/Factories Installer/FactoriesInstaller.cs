@@ -1,7 +1,7 @@
 ﻿using Modules.Core.Factories.Scripts;
 using Zenject;
 
-namespace Modules.Core.Context.Factories_Installer
+namespace Modules.Core.Zenject.Factories_Installer
 {
     public class FactoriesInstaller : MonoInstaller
     {
@@ -16,6 +16,10 @@ namespace Modules.Core.Context.Factories_Installer
                 .BindInterfacesAndSelfTo<CardViewFactory>()
                 .AsSingle()
                 .NonLazy();
+
+            CardViewFactory cardViewFactoryResolve = Container.Resolve<CardViewFactory>();
+            
+            cardViewFactoryResolve.Load();
         }
     }
 }
