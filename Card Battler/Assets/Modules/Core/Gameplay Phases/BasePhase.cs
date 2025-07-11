@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using Modules.Content.Player_Enemy;
 using Modules.Core.Systems.Action_System.Scripts;
-using Modules.New;
 using Zenject;
 
 namespace Modules.Core.Gameplay_Phases

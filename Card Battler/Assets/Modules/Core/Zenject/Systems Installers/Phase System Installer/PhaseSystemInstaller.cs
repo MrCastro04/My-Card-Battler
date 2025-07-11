@@ -2,7 +2,6 @@
 using Modules.Core.Gameplay_Phases;
 using Modules.Core.Systems.Phase_System;
 using Modules.Core.Utils.Coroutine_Runner;
-using Modules.New;
 using Zenject;
 
 namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer

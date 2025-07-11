@@ -2,7 +2,7 @@
 using Modules.Content.Player_Enemy;
 using Modules.Core.Gameplay_Phases;
 using Modules.Core.Utils.Coroutine_Runner;
-using Modules.New;
+using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Systems.Phase_System
@@ -12,8 +12,10 @@ namespace Modules.Core.Systems.Phase_System
         private readonly BasePhase[] _phases;
         private readonly ITurnOwner _turnOwner;
         private readonly CoroutineRunner _coroutineRunner;
+        
         private BasePhase _currentPhase;
-
+        private bool _isNextPhaseRequested = false;
+        
         [Inject]
         public PhaseSystem(BasePhase[] phases, ITurnOwner turnOwner, CoroutineRunner coroutineRunner)
         {
@@ -29,13 +31,21 @@ namespace Modules.Core.Systems.Phase_System
             _coroutineRunner.Run(PhasesFlow(_turnOwner));
         }
 
+        public void RequestNextPhase() => _isNextPhaseRequested = true;
+
         private IEnumerator PhasesFlow(ITurnOwner turnOwner)
         {
             for (int i = 0; i < _phases.Length; i++)
             {
+                _isNextPhaseRequested = false;
+                
                 _currentPhase = _phases[i];
 
                 yield return ExecutePhase(turnOwner);
+
+                yield return new WaitUntil(() => _isNextPhaseRequested);
+
+                Debug.Log($"ГЛАВНЫЙ ПОТОК ПРОШЛА ФАЗА - {i}");
             }
         }
 
