@@ -15,17 +15,16 @@ namespace Modules.Core.Zenject.Systems_Installers.Turn_System_Installer
                  .BindInterfacesAndSelfTo<DrawPhase>()
                  .AsSingle();
 
-             var drawPhase = Container.Resolve<DrawPhase>();
-             var turnOwner = Container.Resolve<ITurnOwner>();
-             var runner = Container.Resolve<CoroutineRunner>();
+             var drawPhaseResolve = Container.Resolve<DrawPhase>();
+             var turnOwnerResolve = Container.Resolve<ITurnOwner>();
+             var runnerResolve = Container.Resolve<CoroutineRunner>();
 
-             _phases = new BasePhase[] {drawPhase};
+             _phases = new BasePhase[] {drawPhaseResolve};
              
              Container
-                 .Bind<PhaseSystem>()
-                 .FromInstance(new PhaseSystem(_phases, turnOwner, runner))
+                 .BindInterfacesAndSelfTo<PhaseSystem>()
+                 .FromInstance(new PhaseSystem(_phases, turnOwnerResolve, runnerResolve))
                  .AsSingle();
-
          }
     }
 }

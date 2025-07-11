@@ -19,7 +19,7 @@ namespace Modules.New
             yield return Exit(activeTurnOwner);
         }
 
-        public override IEnumerator Exit(ITurnOwner activeTurnOwner)
+        private IEnumerator Exit(ITurnOwner activeTurnOwner)
         {
             Debug.Log("Draw Phase End");
             yield return null;
