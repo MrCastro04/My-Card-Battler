@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using Modules.Content.Player_Enemy;
+using Modules.Core.Gameplay_Phases;
 using Modules.Core.Utils.Coroutine_Runner;
+using Modules.New;
 using Zenject;
 
-
-namespace Modules.New
+namespace Modules.Core.Systems.Phase_System
 {
     public class PhaseSystem : IInitializable
     {
@@ -16,7 +18,7 @@ namespace Modules.New
         public PhaseSystem(BasePhase[] phases, ITurnOwner turnOwner, CoroutineRunner coroutineRunner)
         {
             _phases = phases;
-            
+
             _turnOwner = turnOwner;
 
             _coroutineRunner = coroutineRunner;
@@ -32,7 +34,7 @@ namespace Modules.New
             for (int i = 0; i < _phases.Length; i++)
             {
                 _currentPhase = _phases[i];
-                
+
                 yield return ExecutePhase(turnOwner);
             }
         }
