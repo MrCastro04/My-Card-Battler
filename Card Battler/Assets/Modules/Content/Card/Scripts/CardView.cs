@@ -1,4 +1,5 @@
 ﻿using Modules.Core.Game_Actions;
+using Modules.Core.Gameplay_Phases;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Battlefield_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
@@ -17,11 +18,9 @@ namespace Modules.Content.Card.Scripts
         [SerializeField] private GameObject _wrapper;
         [SerializeField] private LayerMask _playZoneMask;
 
-        private BattlefieldSystem _battlefieldSystem;
         private IHighlightCardSystem _highlightCardSystem;
         private ICardInteractions _cardInteractions;
         private ActionSystem _actionSystem;
-        private IManaSystem _manaSystem;
         private Vector3 _positionBeforeDrag;
         private Quaternion _rotationBeforeDrag;
 
@@ -29,21 +28,15 @@ namespace Modules.Content.Card.Scripts
 
         [Inject]
         private void Construct(
-            BattlefieldSystem battlefieldSystem,
             IHighlightCardSystem highlightCardSystem,
             ICardInteractions cardInteractions,
-            ActionSystem actionSystem,
-            IManaSystem manaSystem)
+            ActionSystem actionSystem)
         {
-            _battlefieldSystem = battlefieldSystem;
-
             _highlightCardSystem = highlightCardSystem;
 
             _cardInteractions = cardInteractions;
 
             _actionSystem = actionSystem;
-
-            _manaSystem = manaSystem;
         }
 
         public void Setup(CardModel cardModel)
@@ -114,7 +107,7 @@ namespace Modules.Content.Card.Scripts
 
             if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hitInfo, 10f, _playZoneMask)
                 && hitInfo.collider != null
-                && _manaSystem.IsManaEnough(CardModel.ManaAmount))
+                && _cardInteractions.CanPlayCard(CardModel.ManaAmount))
             {
                 DisableCollider();
 

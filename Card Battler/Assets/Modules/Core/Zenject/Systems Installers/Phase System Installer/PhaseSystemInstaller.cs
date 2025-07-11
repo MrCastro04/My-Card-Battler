@@ -13,6 +13,8 @@ namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer
         
         public override void InstallBindings()
         {
+            BindPreDrawPhase();
+            
             BindDrawPhase();
 
             BindCastPhase();
@@ -22,16 +24,24 @@ namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer
 
         private void BindPhaseSystem()
         {
+            var preDrawPhaseResolve = Container.Resolve<PreDrawPhase>();
             var drawPhaseResolve = Container.Resolve<DrawPhase>();
             var castPhaseResolve = Container.Resolve<CastPhase>();
             var turnOwnerResolve = Container.Resolve<ITurnOwner>();
             var runnerResolve = Container.Resolve<CoroutineRunner>();
 
-            _phases = new BasePhase[] {drawPhaseResolve, castPhaseResolve};
+            _phases = new BasePhase[] {preDrawPhaseResolve,drawPhaseResolve, castPhaseResolve};
 
             Container
                 .BindInterfacesAndSelfTo<PhaseSystem>()
                 .FromInstance(new PhaseSystem(_phases, turnOwnerResolve, runnerResolve))
+                .AsSingle();
+        }
+
+        private void BindPreDrawPhase()
+        {
+            Container
+                .BindInterfacesAndSelfTo<PreDrawPhase>()
                 .AsSingle();
         }
 

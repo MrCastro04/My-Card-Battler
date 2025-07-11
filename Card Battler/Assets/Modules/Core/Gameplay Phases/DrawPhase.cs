@@ -3,7 +3,6 @@ using Modules.Content.Player_Enemy;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Phase_System;
-using UnityEngine;
 
 namespace Modules.Core.Gameplay_Phases
 {
@@ -17,7 +16,7 @@ namespace Modules.Core.Gameplay_Phases
             
             _actionSystem.Perform(drawCardsGa);
 
-            yield return Exit(activeTurnOwner);
+            yield return base.Enter(activeTurnOwner, phaseSystem);
         }
 
         protected override IEnumerator Exit(ITurnOwner activeTurnOwner)

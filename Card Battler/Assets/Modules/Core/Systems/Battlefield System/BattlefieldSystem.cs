@@ -4,6 +4,7 @@ using System.Linq;
 using Modules.Content.Card.Scripts;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.New;
 using Zenject;
 
 namespace Modules.Core.Systems.Battlefield_System
@@ -13,10 +14,13 @@ namespace Modules.Core.Systems.Battlefield_System
         private readonly SlotPlayUnitMono[] _slots;
         private readonly ActionSystem _actionSystem;
         private readonly ICardInteractions _cardInteractions;
+        public SlotPlayUnitMono[] Slots => _slots;
 
         [Inject]
-        public BattlefieldSystem(ActionSystem actionSystem, SlotPlayUnitMono[] slots,
-            ICardInteractions cardInteractions)
+        public BattlefieldSystem(
+            ActionSystem actionSystem, 
+            SlotPlayUnitMono[] slots,
+            ICardInteractions cardInteractions )
         {
             _actionSystem = actionSystem;
 

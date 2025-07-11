@@ -1,9 +1,8 @@
 ﻿using Modules.Core.Systems.Battlefield_System;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.Core.Zenject.Systems_Installers.Battle_System_Installer
+namespace Modules.Core.Zenject.Systems_Installers.Battlefield_System_Installer
 {
     public class BattlefieldSystemInstaller : MonoInstaller
     {
