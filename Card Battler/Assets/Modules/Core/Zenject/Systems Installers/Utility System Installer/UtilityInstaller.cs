@@ -14,10 +14,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Utility_System_Installer
         
         public override void InstallBindings()
         {
-            Container
-                .Bind<ColliderActivator>()
-                .FromNew()
-                .AsSingle();
+            BindColliderActivator();
             
             BindCoroutineRunner();
 
@@ -26,11 +23,18 @@ namespace Modules.Core.Zenject.Systems_Installers.Utility_System_Installer
             BindMouseUtil();
         }
 
+        private void BindColliderActivator()
+        {
+            Container
+                .Bind<ColliderActivator>()
+                .FromNew()
+                .AsSingle();
+        }
+
         private void BindCoroutineRunner()
         {
             CoroutineRunner coroutineRunnerInstance = Container
-                .InstantiatePrefabForComponent<CoroutineRunner>(_coroutineRunnerPrefab, transform.position, Quaternion.identity,
-                    gameObject.transform);
+                .InstantiatePrefabForComponent<CoroutineRunner>(_coroutineRunnerPrefab, transform.position, Quaternion.identity, gameObject.transform);
 
             Container
                 .BindInterfacesAndSelfTo<CoroutineRunner>()

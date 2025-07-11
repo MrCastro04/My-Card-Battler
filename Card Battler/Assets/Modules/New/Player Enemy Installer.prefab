@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5781893817569195205
+--- !u!1 &1593279402182483973
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6499165269543036828}
-  - component: {fileID: 5792605571614307782}
+  - component: {fileID: 8646472973732024839}
+  - component: {fileID: 4179544786278432283}
   m_Layer: 0
-  m_Name: Utility Installer
+  m_Name: Player Enemy Installer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6499165269543036828
+--- !u!4 &8646472973732024839
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781893817569195205}
+  m_GameObject: {fileID: 1593279402182483973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5792605571614307782
+--- !u!114 &4179544786278432283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781893817569195205}
+  m_GameObject: {fileID: 1593279402182483973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e28a7cfd50e48e6a39efd24194bfaa2, type: 3}
+  m_Script: {fileID: 11500000, guid: d906b1c694464896836e8c25374867a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monoDestroyerPrefab: {fileID: 4346131451109043967, guid: a61de4ddeca32df48a4733bb3eb1787c, type: 3}
-  _coroutineRunnerPrefab: {fileID: 2192350191479118660, guid: e36811a5749d0bf4e938342ad8a62ae6, type: 3}
+  _drawCardsInDrawPhase: 4

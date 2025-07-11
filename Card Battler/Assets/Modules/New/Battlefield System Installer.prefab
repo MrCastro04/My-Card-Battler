@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8816226216125150398}
+  _boxCollider: {fileID: 1221626276047770372}
 --- !u!1 &4461107053355887515
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 6533793963517901723}
+  _boxCollider: {fileID: 76937379223371049}
 --- !u!1 &4535177406403599524
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,3 +509,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8595966168850929310}
+  _boxCollider: {fileID: 8064536015041250316}
