@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Enemy Installer
       objectReference: {fileID: 0}
+    - target: {fileID: 4179544786278432283, guid: 1ac7bda156ba28f4b85157eda438b2c8, type: 3}
+      propertyPath: _drawCardsInDrawPhase
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8646472973732024839, guid: 1ac7bda156ba28f4b85157eda438b2c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -13,17 +13,25 @@ namespace Modules.Core.Systems.Card_System.Sub_Systems.Play_Card_System
     {
         private readonly IManaSystem _manaSystem;
         private readonly ActionSystem _actionSystem;
-
+        private readonly CastPhase _castPhase;
+        
         [Inject]
-        public PlayCardSystem(IManaSystem manaSystem, ActionSystem actionSystem)
+        public PlayCardSystem(IManaSystem manaSystem, ActionSystem actionSystem, CastPhase castPhase)
         {
             _manaSystem = manaSystem;
 
             _actionSystem = actionSystem;
+
+            _castPhase = castPhase;
         }
 
         public IEnumerator PlayCardPerformer(PlayCardGA playCardGa)
         {
+            if (_castPhase.CanPlayCards == false)
+            {
+                yield break;
+            }
+            
             yield return PlayCard(playCardGa.PlayedCardView, playCardGa.HitInfo);
         }
 

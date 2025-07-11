@@ -7,6 +7,7 @@ namespace Modules.Content.Player_Enemy
         private IDeck _deck;
         private int _drawCardsInDrawPhase;
 
+        public bool IsActive { get; } = false;
         public int DrawCardsAmountInDrawPhase => _drawCardsInDrawPhase;
         public IDeck Deck => _deck;
 
