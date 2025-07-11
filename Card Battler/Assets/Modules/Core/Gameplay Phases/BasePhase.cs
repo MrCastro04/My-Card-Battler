@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Modules.Content.Player_Enemy;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Phase_System;
+using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Gameplay_Phases
@@ -14,7 +16,14 @@ namespace Modules.Core.Gameplay_Phases
         {
             _actionSystem = actionSystem;
         }
+
+        public virtual IEnumerator Enter(ITurnOwner activeTurnOwner, PhaseSystem phaseSystem)
+        {
+            yield return new WaitUntil(() => phaseSystem.IsNextPhaseRequested);
+
+            yield return Exit(activeTurnOwner);
+        }
         
-        public abstract IEnumerator Enter(ITurnOwner activeTurnOwner);
+        protected abstract IEnumerator Exit(ITurnOwner activeTurnOwner);
     }
 }

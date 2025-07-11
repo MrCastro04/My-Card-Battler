@@ -14,7 +14,9 @@ namespace Modules.Core.Systems.Phase_System
         private readonly CoroutineRunner _coroutineRunner;
         
         private BasePhase _currentPhase;
-        private bool _isNextPhaseRequested = false;
+        private bool _isNextPhaseRequested = false;  
+
+        public bool IsNextPhaseRequested => _isNextPhaseRequested;
         
         [Inject]
         public PhaseSystem(BasePhase[] phases, ITurnOwner turnOwner, CoroutineRunner coroutineRunner)
@@ -41,17 +43,10 @@ namespace Modules.Core.Systems.Phase_System
                 
                 _currentPhase = _phases[i];
 
-                yield return ExecutePhase(turnOwner);
+                yield return _currentPhase.Enter(turnOwner, this);
 
-                yield return new WaitUntil(() => _isNextPhaseRequested);
-
-                Debug.Log($"ГЛАВНЫЙ ПОТОК ПРОШЛА ФАЗА - {i}");
+                Debug.Log($"ГЛАВНЫЙ ПОТОК ПРОШЛА ФАЗА - {_currentPhase}");
             }
-        }
-
-        private IEnumerator ExecutePhase(ITurnOwner turnOwner)
-        {
-            yield return _currentPhase.Enter(turnOwner);
         }
     }
 }

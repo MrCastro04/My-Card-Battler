@@ -2,6 +2,7 @@
 using Modules.Content.Player_Enemy;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Phase_System;
 using UnityEngine;
 
 namespace Modules.Core.Gameplay_Phases
@@ -10,7 +11,7 @@ namespace Modules.Core.Gameplay_Phases
     {
         public DrawPhase(ActionSystem actionSystem) : base(actionSystem) { }
 
-        public override IEnumerator Enter(ITurnOwner activeTurnOwner)
+        public override IEnumerator Enter(ITurnOwner activeTurnOwner, PhaseSystem phaseSystem)
         {
             DrawCardsGA drawCardsGa = new(activeTurnOwner.DrawCardsAmountInDrawPhase, activeTurnOwner.Deck);
             
@@ -19,7 +20,7 @@ namespace Modules.Core.Gameplay_Phases
             yield return Exit(activeTurnOwner);
         }
 
-        private IEnumerator Exit(ITurnOwner activeTurnOwner)
+        protected override IEnumerator Exit(ITurnOwner activeTurnOwner)
         {
             Debug.Log("Draw Phase End");
             yield return null;
