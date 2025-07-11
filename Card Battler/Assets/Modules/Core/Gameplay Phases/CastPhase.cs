@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using Modules.Content.Player_Enemy;
-using Modules.Core.Gameplay_Phases;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Phase_System;
 using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Gameplay_Phases
 {
     public class CastPhase : BasePhase
     {

@@ -22,7 +22,6 @@ namespace Modules.Core.Gameplay_Phases
 
         protected override IEnumerator Exit(ITurnOwner activeTurnOwner)
         {
-            Debug.Log("Draw Phase End");
             yield return null;
         }
     }
