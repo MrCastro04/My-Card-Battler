@@ -1,6 +1,6 @@
 ﻿using Modules.Content.Deck;
 
-namespace Modules.New
+namespace Modules.Content.Player_Enemy
 {
     public interface ITurnOwner
     {

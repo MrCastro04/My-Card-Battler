@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.UI.Views.Mana_View
 {
     public class ManaView : MonoBehaviour
     {

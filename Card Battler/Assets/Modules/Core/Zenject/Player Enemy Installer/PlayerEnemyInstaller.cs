@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Modules.Content.Player_Enemy;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.New
+namespace Modules.Core.Zenject.Player_Enemy_Installer
 {
     public class PlayerEnemyInstaller : MonoInstaller
     {
