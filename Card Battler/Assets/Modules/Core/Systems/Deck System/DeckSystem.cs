@@ -2,6 +2,7 @@
 using System.Linq;
 using Modules.Content.Card.Scripts;
 using Modules.Content.Deck;
+using Modules.New;
 using UnityEngine;
 using Zenject;
 
@@ -13,7 +14,7 @@ namespace Modules.Core.Systems.Deck_System
         public Vector3 Position => DeckUnitsMono.transform.position;
 
         [Inject]
-        public DeckSystem(List<CardData> startDeckUnitsData, DeckUnitsMono deckUnitsMono)
+        public DeckSystem(List<BaseCardData> startDeckUnitsData, DeckUnitsMono deckUnitsMono)
         {
             DeckUnitsMono = deckUnitsMono;
 
@@ -25,7 +26,7 @@ namespace Modules.Core.Systems.Deck_System
             return deck.Dequeue();
         }
 
-        private Queue<CardModel> InitializeDeck(List<CardData> startDeckData)
+        private Queue<CardModel> InitializeDeck(List<BaseCardData> startDeckData)
         {
             List<CardModel> shuffledList = startDeckData
                 .Select(data => new CardModel(data))

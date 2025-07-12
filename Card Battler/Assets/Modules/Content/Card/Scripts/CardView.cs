@@ -1,7 +1,5 @@
 ﻿using Modules.Core.Game_Actions;
-using Modules.Core.Gameplay_Phases;
 using Modules.Core.Systems.Action_System.Scripts;
-using Modules.Core.Systems.Battlefield_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.New;
 using TMPro;
@@ -13,9 +11,13 @@ namespace Modules.Content.Card.Scripts
     public class CardView : MonoBehaviour
     {
         [SerializeField] private TMP_Text _mana;
+        [SerializeField] private TMP_Text _unitHealth;
+        [SerializeField] private TMP_Text _unitDamage;
         [SerializeField] private TMP_Text _name;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private GameObject _wrapper;
+        [SerializeField] private GameObject _healthBlock;
+        [SerializeField] private GameObject _damageBlock;
         [SerializeField] private LayerMask _playZoneMask;
 
         private IHighlightCardSystem _highlightCardSystem;
@@ -43,6 +45,35 @@ namespace Modules.Content.Card.Scripts
         {
             CardModel = cardModel;
 
+            switch (CardModel.BaseBaseCardData)
+            {
+                case (UnitCardData unitCardData):
+
+                    if (_healthBlock.activeSelf == false && _damageBlock.activeSelf == false)
+                    {
+                        _healthBlock.SetActive(true);
+                    
+                        _damageBlock.SetActive(true);
+                    }
+                    
+                    _unitHealth.text = unitCardData.HealthAmount.ToString();
+
+                    _unitDamage.text = unitCardData.DamageAmount.ToString();
+                    
+                    break;
+                
+                case (SpellCardData spellCardData):
+
+                    if (_healthBlock.activeSelf && _damageBlock.activeSelf)
+                    {
+                        _healthBlock.SetActive(false);
+                    
+                        _damageBlock.SetActive(false);
+                    }
+                    
+                    break;
+            }
+            
             _mana.text = cardModel.ManaAmount.ToString();
 
             _name.text = cardModel.Name;

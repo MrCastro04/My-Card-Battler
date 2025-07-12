@@ -1,4 +1,5 @@
 ﻿using Modules.Content.Card.Scripts;
+using Modules.Core.Utils.Collider_Activator;
 using Modules.New;
 using UnityEngine;
 using Zenject;
@@ -6,18 +7,18 @@ using Zenject;
 namespace Modules.Core.Systems.Battlefield_System
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class SlotPlayUnitMono : MonoBehaviour
+    public abstract class SlotPlayUnitMono : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer _spriteRenderer;
-        [SerializeField] private BoxCollider _boxCollider;
-
-        private ColliderActivator _colliderActivator;
+        [SerializeField] protected SpriteRenderer _spriteRenderer;
+        [SerializeField] protected BoxCollider _boxCollider;
+        
+        protected ColliderActivator _colliderActivator;
 
         public bool IsOccupied { get; private set; } = false;
         public CardView CardViewUnit { get; private set; } = null;
 
         [Inject]
-        private void Construct(ColliderActivator colliderActivator)
+        protected virtual void Construct(ColliderActivator colliderActivator)
         {
             _colliderActivator = colliderActivator;
         }

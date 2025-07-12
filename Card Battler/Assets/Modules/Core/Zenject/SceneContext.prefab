@@ -796,6 +796,130 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.size
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[18]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[19]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[20]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[21]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[22]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[23]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[25]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[26]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[27]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[28]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
+    - target: {fileID: 8087500728813759331, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
+      propertyPath: _startDeckData.Array.data[29]
+      value: 
+      objectReference: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
     - target: {fileID: 8704032951806462432, guid: 5cc0464750e8fc947a0ce62732029417, type: 3}
       propertyPath: m_Name
       value: Deck System Installer

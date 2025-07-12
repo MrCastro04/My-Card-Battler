@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Modules.New
+namespace Modules.Core.Utils.Collider_Activator
 {
     public class ColliderActivator
     {

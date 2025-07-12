@@ -2,6 +2,7 @@
 using Modules.Content.Card.Scripts;
 using Modules.Content.Deck;
 using Modules.Core.Systems.Deck_System;
+using Modules.New;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +10,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Deck_System_Installer
 {
     public class DeckSystemInstaller : MonoInstaller
     {
-        [SerializeField] private List<CardData> _startDeckData;
+        [SerializeField] private List<BaseCardData> _startDeckData;
         [SerializeField] private DeckUnitsMono deckUnitsMonoPrefab;
         [SerializeField] private Transform _deckTransform;
         

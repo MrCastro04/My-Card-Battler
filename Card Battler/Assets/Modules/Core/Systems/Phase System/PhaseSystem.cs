@@ -28,8 +28,15 @@ namespace Modules.Core.Systems.Phase_System
             _coroutineRunner = coroutineRunner;
         }
 
-        public void Initialize() => _coroutineRunner.Run(PhasesFlow(_turnOwner));
-        public void RequestNextPhase() => _isNextPhaseRequested = true;
+        public void Initialize()
+        {
+            _coroutineRunner.Run(PhasesFlow(_turnOwner));
+        }
+
+        public void RequestNextPhase()
+        {
+            _isNextPhaseRequested = true;
+        }
 
         private IEnumerator PhasesFlow(ITurnOwner turnOwner)
         {

@@ -5,16 +5,42 @@ namespace Modules.Content.Card.Scripts
 {
     public class CardModel
     {
-        public readonly CardData CardData;
+        public readonly BaseCardData BaseBaseCardData;
+        
+        private readonly int _healthAmount;
+        private readonly int _damageAmount;
+        private readonly CardType _cardType;
+        
+        public int ManaAmount => BaseBaseCardData.ManaAmount;
+        public int HealthAmount => _healthAmount;
+        public int DamageAmount => _damageAmount;
+        public string Name => BaseBaseCardData.Name;
+        public Sprite Image => BaseBaseCardData.Image;
+        public CardType CardType => _cardType;
 
-        public int ManaAmount => CardData.ManaAmount;
-        public string Name => CardData.Name;
-        public Sprite Image => CardData.Image;
-        public CardType CardType => CardData.CardType;
-
-        public CardModel(CardData cardData)
+        public CardModel(BaseCardData baseBaseCardData)
         {
-            CardData = cardData;
+            if (baseBaseCardData is UnitCardData unitCardData)
+            {
+                _healthAmount = unitCardData.HealthAmount;
+
+                _damageAmount = unitCardData.DamageAmount;
+
+                _cardType = unitCardData.CardType;
+                
+                BaseBaseCardData = baseBaseCardData;
+            }
+            
+            else if (baseBaseCardData is SpellCardData spellCardData)
+            {
+                BaseBaseCardData = baseBaseCardData;
+
+                _healthAmount = 0;
+
+                _damageAmount = 0;
+
+                _cardType = spellCardData.CardType;
+            }
         }
     }
 }

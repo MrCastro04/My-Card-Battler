@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Modules.Content.Card.Scripts;
 using Modules.Core.Game_Actions;
@@ -11,22 +12,43 @@ namespace Modules.Core.Systems.Battlefield_System
 {
     public class BattlefieldSystem : IInitializable, IDisposable, ITickable
     {
-        private readonly SlotPlayUnitMono[] _slots;
+        private readonly List<SlotPlayUnitMono> _allBattlefieldSlots;
+        private readonly PlayerSlotPlayUnitMono[] _playerSlots;
+        private readonly EnemySlotPlayUnitMono[] _enemySlots;
         private readonly ActionSystem _actionSystem;
         private readonly ICardInteractions _cardInteractions;
-        public SlotPlayUnitMono[] Slots => _slots;
+        public PlayerSlotPlayUnitMono[] PlayerSlots => _playerSlots;
+        public EnemySlotPlayUnitMono[] EnemySlots => _enemySlots;
 
         [Inject]
         public BattlefieldSystem(
-            ActionSystem actionSystem, 
-            SlotPlayUnitMono[] slots,
-            ICardInteractions cardInteractions )
+            ActionSystem actionSystem,
+            PlayerSlotPlayUnitMono[] playerSlots,
+            EnemySlotPlayUnitMono[] enemySlots,
+            ICardInteractions cardInteractions)
         {
             _actionSystem = actionSystem;
 
-            _slots = slots;
+            _playerSlots = playerSlots;
+
+            _enemySlots = enemySlots;
 
             _cardInteractions = cardInteractions;
+
+            _allBattlefieldSlots = new();
+        }
+
+        public void Initialize()
+        {
+            _allBattlefieldSlots.AddRange(_enemySlots);
+            _allBattlefieldSlots.AddRange(_playerSlots);
+
+            _actionSystem.AttachPerformer<UnitEnterTheBattlefieldGA>(UnitEnterTheBattlefieldPerformer);
+        }
+
+        public void Dispose()
+        {
+            _actionSystem.DetachPerformer<UnitEnterTheBattlefieldGA>();
         }
 
         public void Tick()
@@ -41,30 +63,20 @@ namespace Modules.Core.Systems.Battlefield_System
             }
         }
 
-        public void Initialize()
-        {
-            _actionSystem.AttachPerformer<UnitEnterTheBattlefieldGA>(UnitEnterTheBattlefieldPerformer);
-        }
-
-        public void Dispose()
-        {
-            _actionSystem.DetachPerformer<UnitEnterTheBattlefieldGA>();
-        }
-
         private IEnumerator UnitEnterTheBattlefieldPerformer(UnitEnterTheBattlefieldGA unitEnterTheBattlefieldGa)
         {
             CardView unitEnteredTheBattlefield = unitEnterTheBattlefieldGa.Unit;
 
             SlotPlayUnitMono slotPlayUnitMono = unitEnterTheBattlefieldGa.Slot;
 
-            SlotPlayUnitMono selectedSlot = _slots
+            SlotPlayUnitMono selectedSlot = _allBattlefieldSlots
                 .FirstOrDefault(x => x == slotPlayUnitMono && x != x.IsOccupied);
 
-            if(selectedSlot == default) 
+            if (selectedSlot == default)
                 yield break;
-            
+
             selectedSlot.SetOcupied(unitEnteredTheBattlefield);
-            
+
             selectedSlot.gameObject.SetActive(true);
 
             yield return null;
@@ -72,7 +84,7 @@ namespace Modules.Core.Systems.Battlefield_System
 
         private void ShowAllEmptySlots()
         {
-            foreach (var slot in _slots.Where(x => x != x.IsOccupied))
+            foreach (var slot in _playerSlots.Where(x => x != x.IsOccupied))
             {
                 slot.gameObject.SetActive(true);
             }
@@ -80,7 +92,7 @@ namespace Modules.Core.Systems.Battlefield_System
 
         private void HideAllEmptySlots()
         {
-            foreach (var slot in _slots.Where(x => x != x.IsOccupied))
+            foreach (var slot in _playerSlots.Where(x => x != x.IsOccupied))
             {
                 slot.gameObject.SetActive(false);
             }
