@@ -5,12 +5,11 @@ using Zenject;
 
 namespace Modules.New
 {
-    public class DealDamageSystem
+    public class DealDamageUnitSystem : IInitializable, IDisposable
     {
         private readonly ActionSystem _actionSystem;
 
-        [Inject]
-        public DealDamageSystem(ActionSystem actionSystem)
+        public DealDamageUnitSystem(ActionSystem actionSystem)
         {
             _actionSystem = actionSystem;
         }
@@ -30,11 +29,20 @@ namespace Modules.New
             foreach (var target in dealDamageGa.Targets)
             {
                 UnitBehavior unitBehavior = (target.CardModel.CardData as UnitCardData)?.UnitBehavior;
-                
-                if(unitBehavior == null) 
-                    yield break;
-                
+
+                if (unitBehavior == null)
+                    continue;
+
                 unitBehavior.GetDamage(dealDamageGa.AttackerDamage);
+
+                if (unitBehavior.IsUnitDead())
+                {
+                    DestroyUnitGA destroyUnitGa = new(target);
+                    
+                    _actionSystem.AddReaction(destroyUnitGa);
+                }
+                
+                yield return null;
             }
         }
     }

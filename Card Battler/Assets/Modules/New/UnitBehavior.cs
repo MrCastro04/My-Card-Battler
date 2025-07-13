@@ -1,5 +1,5 @@
 ﻿using Modules.Content.Card.Scripts;
-using UnityEngine;
+using Modules.Core.Utils.Mono_Destroyer;
 
 namespace Modules.New
 {
@@ -24,12 +24,17 @@ namespace Modules.New
 
         public void GetDamage(int damageAmount)
         {
-            _currentHealth -= damageAmount;
+            _currentHealth -= damageAmount; 
+        }
 
+        public bool IsUnitDead()
+        {
             if (_currentHealth <= 0)
             {
-                Debug.Log($"{this} загін знищено");
+                return true;
             }
+
+            return false;
         }
     }
 }

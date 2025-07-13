@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 9221323638779362889}
   - {fileID: 4342639714810665195}
   - {fileID: 5678601267855144738}
+  _cardData: {fileID: 11400000, guid: 32bbba1ea509bac4689a8887918c0e9c, type: 2}
 --- !u!1 &2518456691125499949
 GameObject:
   m_ObjectHideFlags: 0

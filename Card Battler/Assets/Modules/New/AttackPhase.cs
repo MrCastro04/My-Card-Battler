@@ -35,8 +35,7 @@ namespace Modules.New
 
                 CardView playerUnit = playerSlot.CardViewUnit;
 
-                if (Physics.Raycast(playerUnit.transform.position, Vector3.up, out RaycastHit hitInfo, 10f,
-                        _playZoneMask)
+                if (Physics.Raycast(playerUnit.transform.position, Vector3.up, out RaycastHit hitInfo, 10f, _playZoneMask)
                     && hitInfo.collider != null)
                 {
                     if (hitInfo.collider.TryGetComponent(out SlotPlayUnitMono enemySlot) && enemySlot.IsOccupied)
@@ -56,7 +55,7 @@ namespace Modules.New
 
                         DealDamageGA dealDamageGa = new(unitBehavior.CurrentDamage, new() {enemyUnit});
 
-                        _actionSystem.AddReaction(dealDamageGa);
+                        _actionSystem.Perform(dealDamageGa);
 
                         Tween returnInOwnSlotTween = playerUnit.transform.DOMove(playerSlot.transform.position, 0.1f);
 
