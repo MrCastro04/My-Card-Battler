@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Modules.Content.Card.Scripts;
+using Modules.Core.Factories.Scripts;
 using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Utils.Coroutine_Runner;
 using Modules.New;
+using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Modules.Core.Systems.Battlefield_System
 {
@@ -17,15 +21,22 @@ namespace Modules.Core.Systems.Battlefield_System
         private readonly EnemySlotPlayUnitMono[] _enemySlots;
         private readonly ActionSystem _actionSystem;
         private readonly ICardInteractions _cardInteractions;
+        private readonly ICardViewFactory _cardViewFactory;
+        private readonly CardData _cardData;
+        private readonly CoroutineRunner _coroutineRunner;
+        
         public PlayerSlotPlayUnitMono[] PlayerSlots => _playerSlots;
         public EnemySlotPlayUnitMono[] EnemySlots => _enemySlots;
 
         [Inject]
         public BattlefieldSystem(
-            ActionSystem actionSystem,
-            PlayerSlotPlayUnitMono[] playerSlots,
-            EnemySlotPlayUnitMono[] enemySlots,
-            ICardInteractions cardInteractions)
+              ActionSystem actionSystem
+            , PlayerSlotPlayUnitMono[] playerSlots
+            , EnemySlotPlayUnitMono[] enemySlots
+            , ICardInteractions cardInteractions
+            , ICardViewFactory cardViewFactory
+            , CardData cardData
+            , CoroutineRunner coroutineRunner )
         {
             _actionSystem = actionSystem;
 
@@ -35,15 +46,23 @@ namespace Modules.Core.Systems.Battlefield_System
 
             _cardInteractions = cardInteractions;
 
+            _cardViewFactory = cardViewFactory;
+
+            _cardData = cardData;
+
+            _coroutineRunner = coroutineRunner;
+
             _allBattlefieldSlots = new();
         }
 
         public void Initialize()
         {
+            _actionSystem.AttachPerformer<UnitEnterTheBattlefieldGA>(UnitEnterTheBattlefieldPerformer);
+         
             _allBattlefieldSlots.AddRange(_enemySlots);
             _allBattlefieldSlots.AddRange(_playerSlots);
-
-            _actionSystem.AttachPerformer<UnitEnterTheBattlefieldGA>(UnitEnterTheBattlefieldPerformer);
+            
+           _coroutineRunner.Run(FillEnemySlots()); 
         }
 
         public void Dispose()
@@ -63,28 +82,43 @@ namespace Modules.Core.Systems.Battlefield_System
             }
         }
 
+        private IEnumerator FillEnemySlots()
+        {
+            foreach (var enemySlot in _enemySlots)
+            {
+                CardView cardViewInstance = _cardViewFactory.Create(new(_cardData), enemySlot.transform.position);
+
+                UnitEnterTheBattlefieldGA unitEnterTheBattlefieldGa = new(cardViewInstance, enemySlot);
+        
+                _actionSystem.Perform(unitEnterTheBattlefieldGa);
+
+                yield return new WaitUntil(() => _actionSystem.IsPerforming == false);
+            }
+        }
+        
+        
         private IEnumerator UnitEnterTheBattlefieldPerformer(UnitEnterTheBattlefieldGA unitEnterTheBattlefieldGa)
         {
-            CardView unitEnteredTheBattlefield = unitEnterTheBattlefieldGa.Unit;
+            var unit = unitEnterTheBattlefieldGa.Unit;
+            var slot = unitEnterTheBattlefieldGa.Slot;
 
-            SlotPlayUnitMono slotPlayUnitMono = unitEnterTheBattlefieldGa.Slot;
-
-            SlotPlayUnitMono selectedSlot = _allBattlefieldSlots
-                .FirstOrDefault(x => x == slotPlayUnitMono && x != x.IsOccupied);
+            var selectedSlot = _allBattlefieldSlots.FirstOrDefault(x => x == slot && !x.IsOccupied);
 
             if (selectedSlot == default)
+            {
                 yield break;
+            }
 
-            selectedSlot.SetOcupied(unitEnteredTheBattlefield);
-
+            selectedSlot.SetOcupied(unit);
             selectedSlot.gameObject.SetActive(true);
 
             yield return null;
         }
 
+
         private void ShowAllEmptySlots()
         {
-            foreach (var slot in _playerSlots.Where(x => x != x.IsOccupied))
+            foreach (var slot in _playerSlots.Where(x => !x.IsOccupied))
             {
                 slot.gameObject.SetActive(true);
             }
@@ -92,7 +126,7 @@ namespace Modules.Core.Systems.Battlefield_System
 
         private void HideAllEmptySlots()
         {
-            foreach (var slot in _playerSlots.Where(x => x != x.IsOccupied))
+            foreach (var slot in _playerSlots.Where(x => !x.IsOccupied))
             {
                 slot.gameObject.SetActive(false);
             }

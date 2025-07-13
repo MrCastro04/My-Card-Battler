@@ -15,11 +15,12 @@ namespace Modules.New
         private readonly ActionSystem _actionSystem;
         private readonly BattlefieldSystem _battlefieldSystem;
         private readonly LayerMask _playZoneMask;
-        
-        public AttackPhase(ActionSystem actionSystem, BattlefieldSystem battlefieldSystem,LayerMask playZoneMask) : base(actionSystem)
+
+        public AttackPhase(ActionSystem actionSystem, BattlefieldSystem battlefieldSystem, LayerMask playZoneMask) :
+            base(actionSystem)
         {
             _actionSystem = actionSystem;
-            
+
             _battlefieldSystem = battlefieldSystem;
 
             _playZoneMask = playZoneMask;
@@ -29,28 +30,42 @@ namespace Modules.New
         {
             foreach (var playerSlot in _battlefieldSystem.PlayerSlots)
             {
-                CardView playerUnit = playerSlot.CardViewUnit;
-                
-                playerUnit.transform.DOMoveY(5, 0.15f);
+                if (playerSlot == null || playerSlot.IsOccupied == false || playerSlot.CardViewUnit == null)
+                    continue;
 
-                if (Physics.Raycast(playerUnit.transform.position, Vector3.up, out RaycastHit hitInfo, 10f, _playZoneMask)
-                && hitInfo.collider != null)
+                CardView playerUnit = playerSlot.CardViewUnit;
+
+                if (Physics.Raycast(playerUnit.transform.position, Vector3.up, out RaycastHit hitInfo, 10f,
+                        _playZoneMask)
+                    && hitInfo.collider != null)
                 {
                     if (hitInfo.collider.TryGetComponent(out SlotPlayUnitMono enemySlot) && enemySlot.IsOccupied)
                     {
                         CardView enemyUnit = enemySlot.CardViewUnit;
 
-                        DealDamageGA dealDamageGa = new(playerUnit, new() {enemyUnit});
-                        
+                        UnitBehavior unitBehavior = (playerUnit.CardModel.CardData as UnitCardData)?.UnitBehavior;
+
+                        if (unitBehavior == null)
+                            continue;
+
+                        Tween moveToEnemyUnitTween = playerUnit.transform
+                            .DOMoveY(Vector3.Distance(playerUnit.transform.position, enemyUnit.transform.position) / 2,
+                                0.15f);
+
+                        yield return moveToEnemyUnitTween.WaitForCompletion();
+
+                        DealDamageGA dealDamageGa = new(unitBehavior.CurrentDamage, new() {enemyUnit});
+
                         _actionSystem.AddReaction(dealDamageGa);
+
+                        Tween returnInOwnSlotTween = playerUnit.transform.DOMove(playerSlot.transform.position, 0.1f);
+
+                        yield return returnInOwnSlotTween.WaitForCompletion();
                     }
                 }
-                
-
-                Tween tween = playerUnit.transform.DOMoveY(0, 0.1f);
-
-                yield return tween.WaitForCompletion();
             }
+
+            yield return base.Enter(activeTurnOwner, phaseSystem);
         }
 
         protected override IEnumerator Exit(ITurnOwner activeTurnOwner)

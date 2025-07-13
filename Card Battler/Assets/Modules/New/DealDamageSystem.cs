@@ -5,16 +5,16 @@ using Zenject;
 
 namespace Modules.New
 {
-    public class DealDamageSystem 
+    public class DealDamageSystem
     {
         private readonly ActionSystem _actionSystem;
 
-        /*[Inject]
+        [Inject]
         public DealDamageSystem(ActionSystem actionSystem)
         {
             _actionSystem = actionSystem;
         }
-        
+
         public void Initialize()
         {
             _actionSystem.AttachPerformer<DealDamageGA>(DealDamagePerformer);
@@ -29,8 +29,13 @@ namespace Modules.New
         {
             foreach (var target in dealDamageGa.Targets)
             {
-                target.
+                UnitBehavior unitBehavior = (target.CardModel.CardData as UnitCardData)?.UnitBehavior;
+                
+                if(unitBehavior == null) 
+                    yield break;
+                
+                unitBehavior.GetDamage(dealDamageGa.AttackerDamage);
             }
-        }*/
+        }
     }
 }

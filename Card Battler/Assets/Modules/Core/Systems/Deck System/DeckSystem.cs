@@ -14,7 +14,7 @@ namespace Modules.Core.Systems.Deck_System
         public Vector3 Position => DeckUnitsMono.transform.position;
 
         [Inject]
-        public DeckSystem(List<BaseCardData> startDeckUnitsData, DeckUnitsMono deckUnitsMono)
+        public DeckSystem(List<CardData> startDeckUnitsData, DeckUnitsMono deckUnitsMono)
         {
             DeckUnitsMono = deckUnitsMono;
 
@@ -26,7 +26,7 @@ namespace Modules.Core.Systems.Deck_System
             return deck.Dequeue();
         }
 
-        private Queue<CardModel> InitializeDeck(List<BaseCardData> startDeckData)
+        private Queue<CardModel> InitializeDeck(List<CardData> startDeckData)
         {
             List<CardModel> shuffledList = startDeckData
                 .Select(data => new CardModel(data))

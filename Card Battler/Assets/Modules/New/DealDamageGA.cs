@@ -6,13 +6,13 @@ namespace Modules.New
 {
     public class DealDamageGA : GameAction
     {
-        public readonly CardView Attacker;
+        public readonly int AttackerDamage;
         public readonly List<CardView> Targets;
-
-        public DealDamageGA(CardView attacker, List<CardView> targets)
+        
+        public DealDamageGA(int attackerDamage, List<CardView> targets)
         {
-            Attacker = attacker;
-            Targets = targets;
+            AttackerDamage = attackerDamage;
+            Targets = targets; 
         }
     }
 }

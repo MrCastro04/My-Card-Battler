@@ -1,6 +1,5 @@
 ﻿using Modules.Content.Card.Scripts;
 using Modules.Core.Utils.Collider_Activator;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 
@@ -31,11 +30,9 @@ namespace Modules.Core.Systems.Battlefield_System
 
             _spriteRenderer.gameObject.SetActive(false);
 
-            CardViewUnit.transform.SetParent(transform);
+            CardViewUnit.transform.SetParent(gameObject.transform);
 
             CardViewUnit.transform.localPosition = Vector3.zero;
-
-            _colliderActivator.Disable(_boxCollider);
         }
 
         public void SetUnocupied()
@@ -47,8 +44,6 @@ namespace Modules.Core.Systems.Battlefield_System
             IsOccupied = false;
 
             _spriteRenderer.gameObject.SetActive(true);
-
-            _colliderActivator.Actived(_boxCollider);
         }
     }
 }

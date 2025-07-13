@@ -45,7 +45,7 @@ namespace Modules.Content.Card.Scripts
         {
             CardModel = cardModel;
 
-            switch (CardModel.BaseBaseCardData)
+            switch (CardModel.CardData)
             {
                 case (UnitCardData unitCardData):
 
@@ -80,7 +80,7 @@ namespace Modules.Content.Card.Scripts
 
             _spriteRenderer.sprite = cardModel.Image;
         }
-
+        
         private void OnMouseEnter()
         {
             if (_cardInteractions.CanHover() == false)
@@ -156,7 +156,7 @@ namespace Modules.Content.Card.Scripts
             _cardInteractions.SetDragStatus(false);
         }
 
-        private void DisableCollider()
+        public void DisableCollider()
         {
             Collider collider = gameObject.GetComponent<Collider>();
 

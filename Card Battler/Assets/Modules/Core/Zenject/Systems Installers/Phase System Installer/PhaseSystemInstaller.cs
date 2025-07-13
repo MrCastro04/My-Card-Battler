@@ -3,12 +3,16 @@ using Modules.Core.Gameplay_Phases;
 using Modules.Core.Systems.Phase_System;
 using Modules.Core.Utils.Coroutine_Runner;
 using Modules.New;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer
 {
     public class PhaseSystemInstaller : MonoInstaller
     {
+        [SerializeField] private LayerMask _playZoneMaskForAttackPhase;
+        
         private BasePhase[] _phases;
         
         public override void InstallBindings()
@@ -19,23 +23,26 @@ namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer
 
             BindCastPhase();
 
+            BindAttackPhase();
+
             BindPhaseSystem();
         }
 
         private void BindPhaseSystem()
         {
-            var preDrawPhaseResolve = Container.Resolve<PreDrawPhase>();
-            var drawPhaseResolve = Container.Resolve<DrawPhase>();
-            var castPhaseResolve = Container.Resolve<CastPhase>();
-            var turnOwnerResolve = Container.Resolve<ITurnOwner>();
-            var runnerResolve = Container.Resolve<CoroutineRunner>();
+            var preDrawPhase = Container.Resolve<PreDrawPhase>();
+            var drawPhase = Container.Resolve<DrawPhase>();
+            var castPhase = Container.Resolve<CastPhase>();
+            var attackPhase = Container.Resolve<AttackPhase>();
+            var turnOwner = Container.Resolve<ITurnOwner>();
+            var runner = Container.Resolve<CoroutineRunner>();
 
-            _phases = new BasePhase[] {preDrawPhaseResolve,drawPhaseResolve, castPhaseResolve};
+            _phases = new BasePhase[] { preDrawPhase,drawPhase, castPhase, attackPhase };
 
             Container
                 .BindInterfacesAndSelfTo<PhaseSystem>()
-                .FromInstance(new PhaseSystem(_phases, turnOwnerResolve, runnerResolve))
-                .AsSingle();
+                .AsSingle()
+                .WithArguments(_phases, turnOwner, runner);
         }
 
         private void BindPreDrawPhase()
@@ -57,6 +64,14 @@ namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer
             Container
                 .BindInterfacesAndSelfTo<CastPhase>()
                 .AsSingle();
+        }
+
+        private void BindAttackPhase()
+        {
+            Container
+                .BindInterfacesAndSelfTo<AttackPhase>()
+                .AsSingle()
+                .WithArguments(_playZoneMaskForAttackPhase);
         }
     }
 }

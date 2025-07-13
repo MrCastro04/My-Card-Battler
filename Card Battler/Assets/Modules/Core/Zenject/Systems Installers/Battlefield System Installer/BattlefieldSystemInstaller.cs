@@ -9,13 +9,14 @@ namespace Modules.Core.Zenject.Systems_Installers.Battlefield_System_Installer
     {
         [SerializeField] private EnemySlotPlayUnitMono[] _enemySlots;
         [SerializeField] private PlayerSlotPlayUnitMono[] _playerSlots;
-
+        [SerializeField] private CardData _cardData;
+        
         public override void InstallBindings()
         {
-            foreach (var slot in _enemySlots)
-            {
-                slot.gameObject.SetActive(false);
-            }
+            // foreach (var slot in _enemySlots)
+            // {
+            //     slot.gameObject.SetActive(false);
+            // }
 
             foreach (var slot in _playerSlots)
             {
@@ -25,7 +26,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Battlefield_System_Installer
             Container
                 .BindInterfacesAndSelfTo<BattlefieldSystem>()
                 .AsSingle()
-                .WithArguments(_playerSlots, _enemySlots);
+                .WithArguments(_playerSlots, _enemySlots, _cardData);
         }
     }
 }
