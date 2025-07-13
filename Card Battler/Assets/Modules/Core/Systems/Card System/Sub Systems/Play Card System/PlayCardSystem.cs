@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using Modules.Content.Card.Scripts;
 using Modules.Core.Game_Actions;
+using Modules.Core.Game_Actions.Play_Cards_GA;
+using Modules.Core.Game_Actions.Unit_Enters_The_Battlefield_GA;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Battlefield_System;
-using Modules.New;
+using Modules.Core.Systems.Battlefield_System.Battlefield_Slots_For_Units.Base_Slot;
+using Modules.Core.Systems.Mana_System;
 using UnityEngine;
 using Zenject;
 

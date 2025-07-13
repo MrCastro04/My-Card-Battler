@@ -1,5 +1,7 @@
-﻿using Modules.Core.Systems.Battlefield_System;
-using Modules.New;
+﻿using Modules.Content.Card.Scripts.Data;
+using Modules.Core.Systems.Battlefield_System;
+using Modules.Core.Systems.Battlefield_System.Battlefield_Slots_For_Units.Enemy_Slot_Play_Unit_Mono;
+using Modules.Core.Systems.Battlefield_System.Battlefield_Slots_For_Units.Player_Slot_Play_Unit_Mono;
 using UnityEngine;
 using Zenject;
 

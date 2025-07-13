@@ -1,10 +1,10 @@
 using Modules.Content.Deck;
-using Modules.Core.Game_Actions;
+using Modules.Core.Game_Actions.Draw_Cards_GA;
 using Modules.Core.Systems.Action_System.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.New
+namespace Modules.Core.UI.Canvas.Draw_Card_Button
 {
     public class DrawCardButton : MonoBehaviour
     {

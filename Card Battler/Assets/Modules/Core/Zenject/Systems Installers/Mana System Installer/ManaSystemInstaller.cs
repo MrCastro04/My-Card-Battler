@@ -1,6 +1,5 @@
 ﻿using Modules.Core.Systems.Mana_System;
 using Modules.Core.UI.Views.Mana_View;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 

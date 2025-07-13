@@ -2,18 +2,21 @@ using Modules.Core.Systems.Phase_System;
 using UnityEngine;
 using Zenject;
 
-public class GoToNextPhaseButton : MonoBehaviour
+namespace Modules.Core.UI.Canvas.Go_To_Next_Phase_Button
 {
-    private PhaseSystem _phaseSystem;
+    public class GoToNextPhaseButton : MonoBehaviour
+    {
+        private PhaseSystem _phaseSystem;
     
-    [Inject]
-    private void Construct(PhaseSystem phaseSystem)
-    {
-        _phaseSystem = phaseSystem;
-    }
+        [Inject]
+        private void Construct(PhaseSystem phaseSystem)
+        {
+            _phaseSystem = phaseSystem;
+        }
 
-    public void OnClick()
-    {
-        _phaseSystem.RequestNextPhase();
+        public void OnClick()
+        {
+            _phaseSystem.RequestNextPhase();
+        }
     }
 }

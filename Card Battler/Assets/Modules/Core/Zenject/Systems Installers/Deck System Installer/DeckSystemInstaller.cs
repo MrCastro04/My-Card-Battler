@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Modules.Content.Card.Scripts;
+using Modules.Content.Card.Scripts.Data;
 using Modules.Content.Deck;
 using Modules.Core.Systems.Deck_System;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 

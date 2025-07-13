@@ -1,4 +1,4 @@
-﻿namespace Modules.New
+﻿namespace Modules.Content.Card.Scripts
 {
     public enum CardType
     {

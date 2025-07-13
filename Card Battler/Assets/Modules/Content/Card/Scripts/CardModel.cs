@@ -1,4 +1,4 @@
-using Modules.New;
+using Modules.Content.Card.Scripts.Data;
 using UnityEngine;
 
 namespace Modules.Content.Card.Scripts

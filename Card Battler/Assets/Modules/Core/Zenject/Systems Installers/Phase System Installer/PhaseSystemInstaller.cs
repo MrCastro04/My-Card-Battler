@@ -1,8 +1,12 @@
 ﻿using Modules.Content.Player_Enemy;
 using Modules.Core.Gameplay_Phases;
+using Modules.Core.Gameplay_Phases.Attack_Phase;
+using Modules.Core.Gameplay_Phases.Base_Phase;
+using Modules.Core.Gameplay_Phases.Cast_Phase;
+using Modules.Core.Gameplay_Phases.Draw_Phase;
+using Modules.Core.Gameplay_Phases.Pre_Draw_Phase;
 using Modules.Core.Systems.Phase_System;
 using Modules.Core.Utils.Coroutine_Runner;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 

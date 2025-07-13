@@ -1,4 +1,4 @@
-namespace Modules.Core.Constants
+namespace Modules.Core.Utils.Constants
 {
     public static class Constants
     {

@@ -1,7 +1,7 @@
-﻿using Modules.Core.Gameplay_Phases;
+﻿using Modules.Core.Gameplay_Phases.Cast_Phase;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Mana_System;
 using Modules.Core.Utils.Mouse_Util;
-using Modules.New;
 
 namespace Modules.Content.Card.Scripts
 {

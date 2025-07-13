@@ -1,9 +1,9 @@
-﻿using Modules.Core.Game_Actions;
+﻿using Modules.Core.Game_Actions.Player_End_Turn_GA;
 using Modules.Core.Systems.Action_System.Scripts;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.Core.UI.Player_End_Turn_Button
+namespace Modules.Core.UI.Canvas.Player_End_Turn_Button
 {
     public class PlayerEndTurnButton : MonoBehaviour
     {

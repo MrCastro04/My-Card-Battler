@@ -1,4 +1,4 @@
-﻿namespace Modules.New
+﻿namespace Modules.Core.Systems.Mana_System
 {
     public interface IManaSystem
     {

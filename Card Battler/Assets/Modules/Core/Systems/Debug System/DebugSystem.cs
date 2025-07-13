@@ -1,8 +1,12 @@
 ﻿using System;
 using Modules.Core.Game_Actions;
+using Modules.Core.Game_Actions.Draw_Cards_GA;
+using Modules.Core.Game_Actions.Play_Cards_GA;
+using Modules.Core.Game_Actions.Player_End_Turn_GA;
+using Modules.Core.Game_Actions.Player_Start_Turn_GA;
 using Modules.Core.Systems.Action_System.Scripts;
 using Modules.Core.Systems.Deck_System;
-using Modules.New;
+using Modules.Core.Systems.Mana_System;
 using UnityEngine;
 using Zenject;
 

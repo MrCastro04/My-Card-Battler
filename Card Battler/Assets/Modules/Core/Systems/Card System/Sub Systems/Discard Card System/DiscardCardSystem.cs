@@ -3,8 +3,8 @@ using DG.Tweening;
 using Modules.Content.Card.Scripts;
 using Modules.Content.Hand.Scripts;
 using Modules.Core.Game_Actions;
+using Modules.Core.Game_Actions.Discard_Cards_GA;
 using Modules.Core.Systems.Discard_Pile_System;
-using Modules.New;
 using Zenject;
 
 namespace Modules.Core.Systems.Card_System.Sub_Systems.Discard_Card_System

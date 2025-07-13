@@ -2,11 +2,10 @@
 using Modules.Core.Utils.Coroutine_Runner;
 using Modules.Core.Utils.Mono_Destroyer;
 using Modules.Core.Utils.Mouse_Util;
-using Modules.New;
 using UnityEngine;
 using Zenject;
 
-namespace Modules.Core.Zenject.Systems_Installers.Utility_System_Installer
+namespace Modules.Core.Zenject.Utility_Installer
 {
     public class UtilityInstaller : MonoInstaller
     {

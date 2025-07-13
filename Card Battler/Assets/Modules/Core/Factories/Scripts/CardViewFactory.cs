@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Modules.Content.Card.Scripts;
+using Modules.Core.Utils.Constants;
 using Unity.Mathematics;
 using UnityEngine;
 using Zenject;
@@ -19,7 +20,7 @@ namespace Modules.Core.Factories.Scripts
 
         public void Load()
         {
-            _cardViewPrefab = Resources.Load<CardView>(Constants.Constants.CARD_VIEW_PREFAB_PATH);
+            _cardViewPrefab = Resources.Load<CardView>(Constants.CARD_VIEW_PREFAB_PATH);
         }
 
         public CardView Create(CardModel cardModel, Vector3 position)

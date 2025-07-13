@@ -1,5 +1,4 @@
 ﻿using Modules.Core.UI.Views.Mana_View;
-using Modules.New;
 using Zenject;
 
 namespace Modules.Core.Systems.Mana_System
