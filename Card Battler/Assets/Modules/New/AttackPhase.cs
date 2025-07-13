@@ -28,6 +28,18 @@ namespace Modules.New
 
         public override IEnumerator Enter(ITurnOwner activeTurnOwner, PhaseSystem phaseSystem)
         {
+            yield return PlayerUnitsExecuteAttack();
+            
+            yield return base.Enter(activeTurnOwner, phaseSystem);
+        }
+
+        protected override IEnumerator Exit(ITurnOwner activeTurnOwner)
+        {
+            yield return null;
+        }
+
+        private IEnumerator PlayerUnitsExecuteAttack()
+        {
             foreach (var playerSlot in _battlefieldSystem.PlayerSlots)
             {
                 if (playerSlot == null || playerSlot.IsOccupied == false || playerSlot.CardViewUnit == null)
@@ -63,13 +75,6 @@ namespace Modules.New
                     }
                 }
             }
-
-            yield return base.Enter(activeTurnOwner, phaseSystem);
-        }
-
-        protected override IEnumerator Exit(ITurnOwner activeTurnOwner)
-        {
-            yield return null;
         }
     }
 }

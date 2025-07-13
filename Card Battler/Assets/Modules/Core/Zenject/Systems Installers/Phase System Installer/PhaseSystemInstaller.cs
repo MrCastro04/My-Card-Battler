@@ -3,7 +3,6 @@ using Modules.Core.Gameplay_Phases;
 using Modules.Core.Systems.Phase_System;
 using Modules.Core.Utils.Coroutine_Runner;
 using Modules.New;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Zenject;
 
@@ -37,7 +36,7 @@ namespace Modules.Core.Zenject.Systems_Installers.Phase_System_Installer
             var turnOwner = Container.Resolve<ITurnOwner>();
             var runner = Container.Resolve<CoroutineRunner>();
 
-            _phases = new BasePhase[] { preDrawPhase,drawPhase, castPhase, attackPhase };
+            _phases = new BasePhase[] { preDrawPhase,drawPhase, castPhase, attackPhase , castPhase };
 
             Container
                 .BindInterfacesAndSelfTo<PhaseSystem>()

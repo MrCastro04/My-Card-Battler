@@ -10,7 +10,6 @@ using Modules.Core.Utils.Coroutine_Runner;
 using Modules.New;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Modules.Core.Systems.Battlefield_System
 {
@@ -114,8 +113,7 @@ namespace Modules.Core.Systems.Battlefield_System
 
             yield return null;
         }
-
-
+        
         private void ShowAllEmptySlots()
         {
             foreach (var slot in _playerSlots.Where(x => !x.IsOccupied))

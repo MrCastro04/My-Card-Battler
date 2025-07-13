@@ -1,5 +1,6 @@
 ﻿using Modules.Core.Game_Actions;
 using Modules.Core.Systems.Action_System.Scripts;
+using Modules.Core.Systems.Battlefield_System;
 using Modules.Core.Systems.Card_System.Sub_Systems.Highlight_Card_System;
 using Modules.New;
 using TMPro;
@@ -52,35 +53,35 @@ namespace Modules.Content.Card.Scripts
                     if (_healthBlock.activeSelf == false && _damageBlock.activeSelf == false)
                     {
                         _healthBlock.SetActive(true);
-                    
+
                         _damageBlock.SetActive(true);
                     }
-                    
+
                     _unitHealth.text = unitCardData.HealthAmount.ToString();
 
                     _unitDamage.text = unitCardData.DamageAmount.ToString();
-                    
+
                     break;
-                
+
                 case (SpellCardData spellCardData):
 
                     if (_healthBlock.activeSelf && _damageBlock.activeSelf)
                     {
                         _healthBlock.SetActive(false);
-                    
+
                         _damageBlock.SetActive(false);
                     }
-                    
+
                     break;
             }
-            
+
             _mana.text = cardModel.ManaAmount.ToString();
 
             _name.text = cardModel.Name;
 
             _spriteRenderer.sprite = cardModel.Image;
         }
-        
+
         private void OnMouseEnter()
         {
             if (_cardInteractions.CanHover() == false)
@@ -140,12 +141,23 @@ namespace Modules.Content.Card.Scripts
                 && hitInfo.collider != null
                 && _cardInteractions.CanPlayCard(CardModel.ManaAmount))
             {
-                DisableCollider();
+                if (hitInfo.collider.TryGetComponent(out SlotPlayUnitMono slotPlayUnitMono))
+                {
+                    if (slotPlayUnitMono.IsOccupied == false)
+                    {
+                        PlayCardGA playCardGa = new(this, hitInfo);
 
-                PlayCardGA playCardGa = new(this, hitInfo);
+                        _actionSystem.Perform(playCardGa);
+                    }
+                    else
+                    {
+                        transform.rotation = _rotationBeforeDrag;
 
-                _actionSystem.Perform(playCardGa);
+                        transform.position = _positionBeforeDrag;
+                    }
+                }
             }
+            
             else
             {
                 transform.rotation = _rotationBeforeDrag;

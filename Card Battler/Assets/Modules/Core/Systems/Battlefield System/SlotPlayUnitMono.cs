@@ -9,8 +9,7 @@ namespace Modules.Core.Systems.Battlefield_System
     public abstract class SlotPlayUnitMono : MonoBehaviour
     {
         [SerializeField] protected SpriteRenderer _spriteRenderer;
-        [SerializeField] protected BoxCollider _boxCollider;
-        
+
         protected ColliderActivator _colliderActivator;
 
         public bool IsOccupied { get; private set; } = false;
@@ -29,6 +28,8 @@ namespace Modules.Core.Systems.Battlefield_System
             IsOccupied = true;
 
             _spriteRenderer.gameObject.SetActive(false);
+            
+            _colliderActivator.Disable(CardViewUnit.gameObject.GetComponent<Collider>());
 
             CardViewUnit.transform.SetParent(gameObject.transform);
 
@@ -42,6 +43,8 @@ namespace Modules.Core.Systems.Battlefield_System
             CardViewUnit = null;
 
             IsOccupied = false;
+            
+            _colliderActivator.Actived(CardViewUnit?.gameObject.GetComponent<Collider>());
 
             _spriteRenderer.gameObject.SetActive(true);
         }

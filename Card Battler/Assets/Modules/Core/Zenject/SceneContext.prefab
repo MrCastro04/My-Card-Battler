@@ -172,9 +172,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7989999462274072062}
     m_Modifications:
+    - target: {fileID: 76937379223371049, guid: 480964f30f391b3419692294d62ba137, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 996252192081007648, guid: 480964f30f391b3419692294d62ba137, type: 3}
       propertyPath: m_Name
       value: Battlefield System Installer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221626276047770372, guid: 480964f30f391b3419692294d62ba137, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097096744721840262, guid: 480964f30f391b3419692294d62ba137, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752790469326146736, guid: 480964f30f391b3419692294d62ba137, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6433727649305892972, guid: 480964f30f391b3419692294d62ba137, type: 3}
       propertyPath: m_LocalPosition.x
@@ -214,6 +230,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6433727649305892972, guid: 480964f30f391b3419692294d62ba137, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224673750205197648, guid: 480964f30f391b3419692294d62ba137, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064536015041250316, guid: 480964f30f391b3419692294d62ba137, type: 3}
+      propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
